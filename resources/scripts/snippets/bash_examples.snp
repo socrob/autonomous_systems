@@ -1,0 +1,66 @@
+--- # read command line arguments
+
+#!/bin/bash
+echo "the ${1} eats the ${2}"
+
+--- # send notification on local pc
+
+#!/bin/bash
+notify-send "Autom param tuning experiments" "Experiments are finished"
+
+--- # bash for loop
+
+#!/bin/bash
+declare -i num=0
+#num=$[num+1]
+#echo $num
+for i in `seq 1 5`;
+do
+	num=$[num+1]
+	echo $num
+done
+
+--- # bash function with arguments
+
+#!/bin/bash
+function function_with_many_args(){
+echo $1
+echo $2
+}
+
+function_with_many_args hola como
+
+--- # log information (print with the same pattern)
+
+#!/bin/bash
+log_print()
+{
+    printf '[Mercury_planner] : '
+    for each in $@
+    do
+        printf $each
+        printf ' '
+    done
+    printf '\n'
+}
+
+log_print ola tudo bem
+
+--- # bash nested for loop
+
+#!/bin/bash
+for i in `seq 1 2`;
+do
+    for j in `seq 1 5`;
+    do
+		echo 1
+    done
+done
+
+--- # string comparison
+
+#!/bin/bash
+x=valid
+if [ "$x" == "valid" ]; then
+  echo "x has the value 'valid'"
+fi

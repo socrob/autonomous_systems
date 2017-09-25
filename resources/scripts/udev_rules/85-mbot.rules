@@ -1,0 +1,19 @@
+# mbot UDEV rules
+
+# cyton arm
+SUBSYSTEM=="tty",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="A103SN4D",GROUP="dialout",MODE="0666",SYMLINK+="mbot/cyton-arm"
+
+# arduino head camera tilt motor
+SUBSYSTEM=="tty",ATTRS{idProduct}=="0043",ATTRS{idVendor}=="2341",GROUP="dialout",MODE="0666",SYMLINK+="mbot/head-camera-motor"
+
+# boards
+SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board1",SYMLINK+="mbot/sensorboard",GROUP="dialout"
+SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board2",SYMLINK+="mbot/motorboard",GROUP="dialout"
+SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board3",SYMLINK+="mbot/interacboard",GROUP="dialout"
+#SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board4",SYMLINK+="mbot/armsboard",GROUP="dialout"
+#SUBSYSTEMS=="usb",ATTRS{idProduct}=="2303",ATTRS{idVendor}=="067b",SYMLINK+="mbot/rfidreader",GROUP="dialout"
+SUBSYSTEMS=="usb",KERNEL=="ttyACM[0-9]*",ATTRS{idProduct}=="8036",ATTRS{idVendor}=="2341",SYMLINK+="mbot/imu",GROUP="dialout"
+
+# hokuyo laser scanners
+SUBSYSTEM=="tty", KERNEL=="ttyACM*", KERNELS=="1-1.3:1.0", SYMLINK+="mbot/hokuyo-front", MODE="0666"
+SUBSYSTEM=="tty", KERNEL=="ttyACM*", KERNELS=="1-1.1:1.0", SYMLINK+="mbot/hokuyo-rear", MODE="0666"

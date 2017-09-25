@@ -1,0 +1,1 @@
+SUBSYSTEMS=="usb",ATTRS{manufacturer}=="Microsoft",ATTRS{idProduct}=="0772",SYMLINK+="hdcam",GROUP="dialout",MODE:="0666"

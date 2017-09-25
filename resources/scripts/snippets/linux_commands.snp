@@ -1,0 +1,47 @@
+# useful linux commands
+#----------------------
+
+# commit as a different user
+git commit --author="Name <email>" -m "commit msg"
+
+# convert .svg (graphic vector image) to .pdf
+rsvg-convert -f pdf -o architecture_diagram.pdf architecture_diagram.svg
+
+# to check if a package is installed on the PC
+dpkg -l package_name
+
+# restart network service
+sudo /etc/init.d/networking restart
+
+# scan for new networks
+sudo iwlist eth1 scan
+
+# go to config files network
+cd /etc/NetworkManager/system-connections
+
+# to check how much space is left in hard drive
+df -h
+
+# to read the ip address of the router
+route -n
+
+# to get the amount of running nodes on a pc (ros)
+rosnode list | wc -l
+
+# change default gcc compiler
+sudo update-alternatives --config gcc
+
+# run symba ipc planner
+./plan-ipc seq-opt-symba-2 domain.pddl p01.pddl hola
+
+# ls showing files size with a human readable format
+ls -lh
+
+# run test on individual packages using python catkin tools
+catkin test mdr_2dslam
+
+# see if a package is installed on the system
+sudo dpkg -S package_name
+
+# list all active sessions on a ubuntu pc (by ssh for example)
+who

@@ -1,0 +1,12 @@
+# This script will enable a program on your pc (i.e. anaconda)
+# some programs are known to have incompatibility problems when used together
+# (i.e. anaconda and ros), this script allows you to source a particular program
+# when required.
+
+# add program condition, i.e.add program binary to PATH env
+[ -f "~/.bashrc" ] && source ~/.bashrc
+PATH=$HOME/programs/anaconda/bin:$PATH
+
+# change the color of your terminal to make you aware that 
+# anaconda is enabled on that specific terminal
+PS1="\e[1;31;40m[CONDA]\e[0m $PS1"

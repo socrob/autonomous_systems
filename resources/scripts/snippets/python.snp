@@ -1,0 +1,3 @@
+# python comprehension list
+a = [each for each in range(1,5)]
+
