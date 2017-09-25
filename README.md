@@ -4,12 +4,12 @@ Autonomous Systems
 This repository holds code and resources for the Autonomous Systems course by Prof. Pedro Lima, Prof. Rodrigo Ventura and M.Sc. Oscar Lima Carrion
 which takes place at Instituto Superior Tecnico, Lisboa.
 
+NOTE: The course expects you to have installed Ubuntu 16.04 and ROS Kinetic.
+
 Please follow these instructions:
 
 Installation instructions
 ===
-
-The following instructions are tested under Ubuntu 16.04 and ROS Kinetic
 
 Install git on your system:
 
