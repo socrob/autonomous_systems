@@ -1,6 +1,8 @@
 Lab 1 instructions
 ==================
 
+The goal for this lab is to get you introduced with ROS.
+
 For this lab we are going to work with [stage](http://rtv.github.io/Stage/) simulator.
 The following instructions have been tested under Ubuntu 16.04 and ROS kinetic.
 
@@ -85,6 +87,9 @@ you can run the file by doing:
 
         python pioneer_behavior.py
 
-13. Check additional resources:
+13. Watch the following youtube [video](https://youtu.be/IZcE1vrMCvM) to get see an example of
+one posible solution for the problem in this lab.
+
+14. Check additional resources:
 
 [About the Pioneer (real) robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
