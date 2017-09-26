@@ -92,6 +92,18 @@ Thanks!
 Resources
 ===
 
-Inside resources folder there is script folder that you can copy on your system home folder to facilitate
-your work with some nice features such as: color syntax highlight scripts and alias, suggested programs to install,
-loading relevant ROS ennvironment variables, etc.
+[ROS installation (kinetic)](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+
+[ROS python example on how to publish / subcribe from code](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
+
+[ROS beginner tutorials](http://wiki.ros.org/ROS/Tutorials)
+
+[Nice ROS online course from ETH Zurich](http://www.rsl.ethz.ch/education-students/lectures/ros.html) see their youtube lectures [here](https://www.youtube.com/watch?list=PLE-BQwvVGf8HOvwXPgtDfWoxd4Cc6ghiP&v=0BxVPCInS3M)
+
+[ROS tf tranformations library package](http://wiki.ros.org/tf)
+
+[ROS tf tutorials](http://wiki.ros.org/tf/Tutorials)
+
+[ROS AMCL package Adaptive Monte Carlo localization](http://wiki.ros.org/amcl)
+
+[ROS gmapping : SLAM algorithm (simultaneous localization and mapping)](http://wiki.ros.org/gmapping)
