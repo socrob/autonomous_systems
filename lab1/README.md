@@ -87,8 +87,4 @@ you can run the file by doing:
 
 13. Check additional resources:
 
-[Python course](https://www.youtube.com/watch?v=tKTZoB2Vjuk&list=PL123FD827C7984559)
-
-[ROS beginner tutorials](http://wiki.ros.org/ROS/Tutorials)
-
 [About the Pioneer (real) robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
