@@ -94,6 +94,8 @@ Resources
 
 [ROS installation (kinetic)](http://wiki.ros.org/kinetic/Installation/Ubuntu)
 
+[Learn how to program in python, google developers nice online course](https://www.youtube.com/watch?v=tKTZoB2Vjuk&list=PL123FD827C7984559)
+
 [ROS python example on how to publish / subcribe from code](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
 [ROS beginner tutorials](http://wiki.ros.org/ROS/Tutorials)
