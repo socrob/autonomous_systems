@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>mbot_world_model</name>
+  <version>0.0.1</version>
+  <description>Environment data: maps, waypoints, poses, etc.</description>
+
+  <maintainer email="olima@isr.tecnico.ulisboa.pt">Oscar Lima</maintainer>
+
+  <license>GPLv3</license>
+  
+  <author email="olima@isr.tecnico.ulisboa.pt">Oscar Lima</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <test_depend>roslaunch</test_depend>
+
+</package>
