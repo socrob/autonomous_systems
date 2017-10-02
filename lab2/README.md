@@ -45,14 +45,14 @@ run the following commands on each terminal:
         roscore
         rosrun tf static_transform_publisher 3 2 0 0 0 0 map odom 50
         rosrun tf static_transform_publisher 3 1 0 0 0 0 odom base_link 50
-        osrun tf tf_echo map base_link
+        rosrun tf tf_echo map base_link
         rosrun rviz rviz
 
 configure rviz:
 
         set fixed frame as map
         add tf topic
-        set 
+        expand tf topic options and set "Marker Scale" to 10
 
 Observe the output of the tf echo terminal:
 
@@ -61,13 +61,25 @@ Observe the output of the tf echo terminal:
 
 Notice that the same can be done from code by taking example from here [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29)
 
-A node has being prepared for you as an example:
+A node has being prepared for you as an example of how to use tf library from code:
 
         cd $HOME/autonomous_systems/lab2
         python tf_listener_tutorial.py
 
-Check the code and make sure you understand each line of the provided code. Aditionally at home you can make the [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29) if you want.
+Check the code and make sure you understand each line of the provided code.
 
+Print the tf tree pdf:
+
+        sudo apt-get install ros-kinetic-tf2-tools
+        tf_view_frames
+
+Keep in mind this last command (tf_view_frames) is an alias for:
+
+        cd /var/tmp && rosrun tf2_tools view_frames.py && evince frames.pdf &
+
+The above command goes to a temp folder, runs tf2_tools view_frames.py node that generates a pdf, then simply open the frames.pdf generated with a pdf viewer (evince in this case).
+
+Aditionally at home you can make the [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29) if you want.
 
 Pioneer robot driver installation
 ===
@@ -94,13 +106,32 @@ Install udev rules on your system:
 
 Udev rules have 2 purposes: a) they create a simlink to the physical device b) they provide with adecuate admin rights to write to the serial port 
 
-        will be presented in class
-        
+        sudo touch /etc/udev/rules.d/85-pioneer.rules && echo 'KERNEL=="ttyUSB*",ATTRS{idProduct}=="067b",ATTRS{idVendor}=="2303",GROUP="dialout",MODE="0666",SYMLINK+="pioneer/usb_to_serial_port"' | sudo tee --append /etc/udev/rules.d/85-pioneer.rules
+        sudo service udev restart
+
 Ensure that your rules have been properly installed:
 
 Disconnect and connect the robot USB to serial converter cable
 
-        ls /dev/mbot/rosaria
+        ls /dev/pioneer/usb_to_serial_adaptor
+
+The file should exist! (is a simlink to the port with write permissions)
+
+NOTE: If the above udev rules did not work, you could always do:
+
+        sudo chmod a+rw /dev/ttyUSB0
+
+Keep in mind this last one has the disadvantage that you need to do it every time you unplug-plug the usb to serial adaptor.
+
+Your pioneer port
+===
+
+Should be one of this two:
+
+        /dev/ttyUSB0
+        /dev/pioneer/usb_to_serial_adaptor
+
+Depending on which branch of the tutorial you have decided (or managed) to follow.
 
 Test your pioneer installation
 ===
@@ -108,7 +139,7 @@ Test your pioneer installation
 Keep in mind that will need several terminals to complete this steps:
 
         roscore
-        rosparam set RosAria/port /dev/mbot/rosaria && rosrun rosaria RosAria
+        rosparam set RosAria/port /dev/pioneer/usb_to_serial_adaptor && rosrun rosaria RosAria
 
 Move the robot:
 
@@ -142,7 +173,7 @@ Tell the command laptop that the roscore is running on another PC (replace IP_AD
 Run the robot driver on the robot laptop (needs two terminals):
 
         roscore
-        rosparam set RosAria/port /dev/mbot/rosaria && rosrun rosaria RosAria
+        rosparam set RosAria/port /dev/pioneer/usb_to_serial_adaptor && rosrun rosaria RosAria
         
 Test moving the robot from the command laptop:
 
@@ -183,42 +214,37 @@ Build your catkin workspace:
         
         roscd
         catkin build
-        
-Run the dataset:
-        
-        roscore
-        roslaunch mbot_autom_tuning_amcl amcl_run_bag.launch
-
-open and configure rviz:
-
-        rosrun rviz rviz
-        add 2 laser scanner topics
-        expand and select Topic:/scan_front, /scan_rear
-        
-run a map server instance to publish the map:
-
-        roslaunch mbot_autom_tuning_amcl amcl_dependencies.launch
 
 Localize the robot
 ===
 
 Kill all previous ros nodes and start freshly
 
+Install dependencies:
+
+        cp -r $HOME/autonomous_systems/resources/mbot_world_model/ $ROS_WORKSPACE
+        cp -r $HOME/autonomous_systems/resources/mcr_states/ $ROS_WORKSPACE
+        cp -r $HOME/autonomous_systems/resources/mcr_manipulation_msgs/ $ROS_WORKSPACE
+        cp -r $HOME/autonomous_systems/resources/mcr_common_msgs/ $ROS_WORKSPACE
+        sudo apt-get install ros-kinetic-map-server ros-kinetic-moveit-msgs ros-kinetic-amcl
+
+Build the dependencies:
+
+        roscd
+        catkin build
+        source ~/.bashrc
+
+NOTE: Please notice for new pkgs to be recognized by ROS you need to 1) build it 2) source the .bashrc !
+
 Run the server:
 
+        roscore
         roslaunch mbot_autom_tuning_amcl amcl_instance_server.launch
 
 Run the client:
 
         rosrun mbot_autom_tuning_amcl run_amcl_instance_client_node
 
-Open rviz and visualize the localization:
+Configure rviz to visualize the localization:
 
-        rosrun rviz rviz
-        
-Add the following topics:
-
-        /scan_front
-        /scan_rear
-        /tf
-        /map
+See the following [youtube video](https://youtu.be/8Tb2poqgDqM) that explains how to configure rviz
