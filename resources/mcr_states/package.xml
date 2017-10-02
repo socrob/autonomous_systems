@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <name>mcr_states</name>
+  <version>0.1.0</version>
+  <description>SMACH states and sub state machines</description>
+
+  <author email="santosh.thoduka@smail.inf.h-brs.de">Santosh Thoduka</author>
+
+  <maintainer email="santosh.thoduka@smail.inf.h-brs.de">Santosh Thoduka</maintainer>
+  <maintainer email="frederik.hegger@h-brs.de">Frederik Hegger</maintainer>
+  <maintainer email="sven.schneider@h-brs.de">Sven Schneider</maintainer>
+  <maintainer email="matthias.fueller@h-brs.de">Matthias Füller</maintainer>
+  <maintainer email="rhama.dwiputra@h-brs.de">Rhama Dwiputra</maintainer>
+  <maintainer email="nico.hochgeschwender@h-brs.de">Nico Hochgeschwender</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslint</build_depend>
+
+  <run_depend>mcr_perception_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>smach</run_depend>
+  <run_depend>smach_ros</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+</package>
+
+
