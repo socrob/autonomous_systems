@@ -106,14 +106,13 @@ Install udev rules on your system:
 
 Udev rules have 2 purposes: a) they create a simlink to the physical device b) they provide with adecuate admin rights to write to the serial port 
 
-        sudo touch /etc/udev/rules.d/85-pioneer.rules && echo 'KERNEL=="ttyUSB*",ATTRS{idProduct}=="067b",ATTRS{idVendor}=="2303",GROUP="dialout",MODE="0666",SYMLINK+="pioneer/usb_to_serial_port"' | sudo tee --append /etc/udev/rules.d/85-pioneer.rules
-        sudo service udev restart
+        source $HOME/autonomous_systems/resources/scripts/udev_rules/install_udev_rules.sh
 
 Ensure that your rules have been properly installed:
 
 Disconnect and connect the robot USB to serial converter cable
 
-        ls /dev/pioneer/usb_to_serial_adaptor
+        ls /dev/pioneer/usb_to_serial_port
 
 The file should exist! (is a simlink to the port with write permissions)
 
@@ -129,7 +128,7 @@ Your pioneer port
 Should be one of this two:
 
         /dev/ttyUSB0
-        /dev/pioneer/usb_to_serial_adaptor
+        /dev/pioneer/usb_to_serial_port
 
 Depending on which branch of the tutorial you have decided (or managed) to follow.
 
@@ -139,7 +138,7 @@ Test your pioneer installation
 Keep in mind that will need several terminals to complete this steps:
 
         roscore
-        rosparam set RosAria/port /dev/pioneer/usb_to_serial_adaptor && rosrun rosaria RosAria
+        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port && rosrun rosaria RosAria
 
 Move the robot:
 
@@ -173,7 +172,7 @@ Tell the command laptop that the roscore is running on another PC (replace IP_AD
 Run the robot driver on the robot laptop (needs two terminals):
 
         roscore
-        rosparam set RosAria/port /dev/pioneer/usb_to_serial_adaptor && rosrun rosaria RosAria
+        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port && rosrun rosaria RosAria
         
 Test moving the robot from the command laptop:
 

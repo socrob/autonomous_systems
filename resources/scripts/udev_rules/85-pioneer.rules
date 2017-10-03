@@ -1,0 +1,2 @@
+# pioneer usb to serial converter udev rule
+SUBSYSTEMS=="usb",ATTRS{idVendor}=="067b",ATTRS{idProduct}=="2303",GROUP="dialout",MODE="0666",SYMLINK+="pioneer/usb_to_serial_port"
