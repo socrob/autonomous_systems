@@ -204,15 +204,11 @@ Please clone the following repository into your catkin workspace (it contains th
         roscd
         git clone https://github.com/oscar-lima/autom_param_optimization.git
         
-Ignore one package of the repository that is not needed for now (and that does not compile):
-        
-        cd $ROS_WORKSPACE/autom_param_optimization/mbot_autom_param_tuning/mbot_score_functions/mbot_pose_evaluator
-        touch CATKIN_IGNORE
-        
 Build your catkin workspace:
         
         roscd
         catkin build
+        source ~/.bashrc
 
 Localize the robot
 ===
