@@ -1,0 +1,54 @@
+<launch>
+	
+	<!-- UWB POSE ESTIMATION COUPLED-->
+	
+	
+
+	<!-- setting anchors position through yaml file -->
+	
+	<rosparam file="$(find monarch_uwb)/config_files/anchors_pos.yaml" ns="anchors" />
+	<rosparam file="$(find monarch_uwb)/config_files/tags_config.yaml" ns="tags_config" />
+	<rosparam param="world_frame">map</rosparam>
+
+	
+
+	<!-- launching a node for tag0 -->
+	
+	<node name="driver0" pkg="monarch_uwb" type="driver.py" output="screen"> 
+	<param name="id" value="BACK" />
+	<param name="src" value="/dev/ttyUSB0" />
+	</node>
+	
+	<node name="driver1" pkg="monarch_uwb" type="driver.py" output="screen"> 
+	<param name="id" value="FRONT" />
+	<param name="src" value="/dev/ttyUSB1" />
+	</node>
+	
+	<node name="driver2" pkg="monarch_uwb" type="driver.py" output="screen"> 
+	<param name="id" value="KID" />
+	<param name="src" value="10.1.15.55" />
+	</node>
+	
+	
+	<node name="uwb_filtering0" pkg="monarch_uwb" type="filter.py" output="screen">
+	<param name="id" value="BACK" />
+	</node>
+	
+	<node name="uwb_filtering1" pkg="monarch_uwb" type="filter.py" output="screen">
+	<param name="id" value="FRONT" />
+	</node>
+	
+	<!-- TRILATERATION COUPLED 
+		subscribe from: "uwb_tag_id/filtered"
+		publish to: "uwb_robot/Pose_lsq"
+	-->
+	
+	
+	<node name="uwb_triang" pkg="monarch_uwb" type="CoupleTrilateration.py" output="screen" args="/tf:=/mbot07/tf" >
+	<param name="id" value="FRONT,BACK" />
+	<param name="tf" value="uwb_base_link" />
+	</node> 
+	
+	
+
+</launch>

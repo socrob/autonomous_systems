@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- setting anchors position through yaml file -->
+  <rosparam file="$(find monarch_uwb)/config_files/tags_config.yaml" ns="tags_config" />
+  <rosparam param="world_frame">map</rosparam>
+
+  <!-- launching a node for tag0 -->
+
+  <node name="driver0" pkg="monarch_uwb" type="driver.py" output="screen"> 
+    <param name="id" value="BACK" />
+    <param name="src" value="/dev/ttyUSB0" />
+  </node>
+
+  <node name="driver1" pkg="monarch_uwb" type="driver.py" output="screen"> 
+    <param name="id" value="FRONT" />
+    <param name="src" value="/dev/ttyUSB1" />
+  </node>
+
+  <node name="uwb_filtering0" pkg="monarch_uwb" type="filter.py" output="screen">
+    <param name="id" value="BACK" />
+  </node>
+
+  <node name="uwb_filtering1" pkg="monarch_uwb" type="filter.py" output="screen">
+    <param name="id" value="FRONT" />
+  </node>
+
+  <node name="uwb_mapping" pkg="monarch_uwb" type="uwb_mapping.py" output="screen" args="/tf:=/mbot07/tf">
+    <param name="id" value="FRONT" />
+  </node>
+
+</launch>
