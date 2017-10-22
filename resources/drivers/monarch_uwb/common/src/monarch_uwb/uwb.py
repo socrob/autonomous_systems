@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 
 '''
-Created on 22.10.2017 by
-Oscar Lima
-olima@isr.tecnico.ulisboa.pt
-
-partially based on the one:
-Created on 20.02.2014
-by @author: Fialho
+ * Copyright [2017] <Instituto Superior Tecnico>
+ *
+ * Author: Oscar Lima (olima@isr.tecnico.ulisboa.pt)
+ *
+ * Open source driver for the Ultra Wide Band sensor by Eliko:
+ *
+ *     https://www.eliko.ee/products/kio-rtls/
+ *
+ * partially based on the one:
+ * Created on 20.02.2014
+ * by @author: Fialho
 '''
 
 import serial
@@ -92,7 +96,7 @@ class UWBDriver(object):
         example response:
 
         tx/rx antenna delays set to 16447
-        
+
         NOTE: This command is recommended to experiment first in a serial terminal such as "cutecom"
         '''
         return self.__write_to_serial_port__(number, 'get antenna delay')
@@ -134,9 +138,12 @@ class UWBDriver(object):
         for anchor_string in readings:
             temp = anchor_string.split(' ')
             if len(temp) == 5:
-                groupA.append(float(temp[0])) # anchor A last n readings
-                groupB.append(float(temp[1])) # anchor A last n readings
-                groupC.append(float(temp[2])) # anchor A last n readings
+                try:
+                    groupA.append(float(temp[0])) # anchor A last n readings
+                    groupB.append(float(temp[1])) # anchor A last n readings
+                    groupC.append(float(temp[2])) # anchor A last n readings
+                except:
+                    pass
             else:
                 if debug:
                     self.log_err('Error: Unknown command received from serial port')

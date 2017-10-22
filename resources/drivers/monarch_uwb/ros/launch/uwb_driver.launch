@@ -1,15 +1,37 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- TODO -->
-    <arg name="todo" default="todo" />
+    <!-- NOTE: This is an example launch file, please do not modify ! -->
 
-    <!-- TODO -->
-    <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
-        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <!-- the name of your tag, can be any, is just to differentiate in case you have many -->
+    <arg name="tag_id" default="front" />
 
-        <!-- Remap cmd_vel to a medium priority to allow joypad override control + publish constantly for some small amount of time -->
-        <remap from="cmd_vel" to="/cmd_vel_constant"/>
+    <!-- the physical address of your usb to serial port tag -->
+    <arg name="device" default="/dev/mbot/uwb" />
+
+    <!-- the reference frame in which the range radius readings will come -->
+    <arg name="frame_id" default="$(arg tag_id)_uwb_link" />
+
+    <!-- the frequency at which the node will run, set between 1 - 10 maximum -->
+    <arg name="loop_rate" default="3.0" />
+
+    <!-- Ultra Wide Band sensor ros wrapper driver -->
+    <node pkg="monarch_uwb" type="uwb_driver_node" name="uwb_driver_node" output="screen" >
+        <param name="tag_id" value="$(arg tag_id)" />
+        <param name="device" value="$(arg device)" />
+        <param name="frame_id" value="$(arg frame_id)" />
+        <param name="loop_rate" value="$(arg loop_rate)" />
+
+        <!-- change topic name -->
+        <remap from="~tag_readings" to="~$(arg tag_id)_tag_readings"/>
+    </node>
+
+    <!-- Ultra Wide Band sensor visualization with SPHERE marker -->
+    <node pkg="monarch_uwb" type="uwb_visualization_node" name="uwb_visualization_node" output="screen" >
+        <param name="loop_rate" value="10.0" />
+
+        <!-- change topic name -->
+        <remap from="~tag_readings" to="uwb_driver_node/$(arg tag_id)_tag_readings"/>
     </node>
 
 </launch>

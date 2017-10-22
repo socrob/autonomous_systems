@@ -1,5 +1,16 @@
 #!/usr/bin/env python
 
+'''
+ * Copyright [2017] <Instituto Superior Tecnico>
+ *
+ * Author: Oscar Lima (olima@isr.tecnico.ulisboa.pt)
+ *
+ * Open source ros wrapper driver for the Ultra Wide Band sensor by Eliko:
+ *
+ *     https://www.eliko.ee/products/kio-rtls/
+ *
+'''
+
 import rospy
 import std_msgs.msg
 
@@ -18,11 +29,11 @@ class UWBDriverNode(object):
         # get the tag device port from param server
         device = rospy.get_param('~device', '/dev/mbot/uwb')
         # get the reference frame in which the readings are comming from
-        frame_id = rospy.get_param('~frame_id', self.tag_id + '_uwb_' + 'link')
+        frame_id = rospy.get_param('~frame_id', self.tag_id + '_uwb_link')
         # create object of uwb class
         self.tag = UWBDriver(device)
         # setup uwb readings publisher
-        self.uwb_pub = rospy.Publisher('~' + self.tag_id + '_tag', uwb_anchor_array, queue_size=1)
+        self.uwb_pub = rospy.Publisher('~tag_readings', uwb_anchor_array, queue_size=1)
         # create single anchor msgs
         self.anchorA_msg = uwb_anchor()
         self.anchorB_msg = uwb_anchor()
