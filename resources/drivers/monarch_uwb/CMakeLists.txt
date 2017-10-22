@@ -2,25 +2,24 @@ cmake_minimum_required(VERSION 2.8.3)
 project(monarch_uwb)
 
 find_package(catkin REQUIRED
-    roscpp
     std_msgs
-    geometry_msgs
+    message_generation
 )
 
-include_directories(
-  ros/include
-  ${catkin_INCLUDE_DIRS}
-)
-
-catkin_package(
-  CATKIN_DEPENDS
-    roscpp
-    std_msgs
-    geometry_msgs
+add_message_files(
+  DIRECTORY
+    ros/msg
+  FILES
+    uwb_anchor.msg
+    uwb_anchor_array.msg
 )
 
 catkin_python_setup()
 
-### EXECUTABLES
-# add_executable(odom_fixer ros/src/odom_fixer.cpp)
-# arget_link_libraries(odom_fixer ${catkin_LIBRARIES})
+generate_messages(DEPENDENCIES std_msgs)
+
+catkin_package(
+  CATKIN_DEPENDS
+    std_msgs
+    message_runtime
+)

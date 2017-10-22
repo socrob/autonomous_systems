@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- TODO -->
+    <arg name="todo" default="todo" />
+
+    <!-- TODO -->
+    <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+        <!-- Remap cmd_vel to a medium priority to allow joypad override control + publish constantly for some small amount of time -->
+        <remap from="cmd_vel" to="/cmd_vel_constant"/>
+    </node>
+
+</launch>

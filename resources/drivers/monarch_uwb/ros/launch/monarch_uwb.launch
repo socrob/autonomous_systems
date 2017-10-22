@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
- <!-- small description about your node -->
- 
- <node pkg="my_package_name" type="my_node_name" name="my_node_name"
- respawn="false" output="screen" args="$(find monarch_uwb_name)/ros/config/my_arg_file.yaml"/>
-
-</launch>

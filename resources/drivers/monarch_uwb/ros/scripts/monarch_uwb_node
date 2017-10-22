@@ -1,6 +1,0 @@
-#!/usr/bin/env python
-
-import monarch_uwb_ros.monarch_uwb_node
-
-if __name__ == '__main__':
- monarch_uwb_ros.monarch_uwb_node.main()
