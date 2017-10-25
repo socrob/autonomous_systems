@@ -38,3 +38,19 @@ Crazy flie website:
 ROS wrapper that they use:
 
         https://github.com/whoenig/crazyflie_ros
+
+Bitcraze github:
+
+        https://github.com/bitcraze/
+
+Bitcraze wiki:
+
+        https://wiki.bitcraze.io/
+
+Bitcraze forum:
+
+        https://forum.bitcraze.io/
+
+Python examples:
+
+        https://github.com/bitcraze/crazyflie-lib-python/tree/master/examples
