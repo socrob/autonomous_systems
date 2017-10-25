@@ -142,7 +142,7 @@ Keep in mind that will need several terminals to complete this steps:
 
 Move the robot:
 
-        rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
+        rostopic pub -r 10 /RosAria/cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
 
 Open rviz and visualize sonar data:
 
