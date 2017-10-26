@@ -1,0 +1,2 @@
+# playstation udev rules
+SUBSYSTEM=="usb",ATTRS{idProduct}=="0268",ATTRS{idVendor}=="054c",SYMLINK+="pioneer/joypad",GROUP="dialout"
