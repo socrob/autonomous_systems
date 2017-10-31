@@ -106,7 +106,8 @@ Install udev rules on your system:
 
 Udev rules have 2 purposes: a) they create a simlink to the physical device b) they provide with adecuate admin rights to write to the serial port 
 
-        source $HOME/autonomous_systems/resources/scripts/udev_rules/install_udev_rules.sh
+        cd $HOME/autonomous_systems/resources/scripts/udev_rules/install_udev_rules.sh
+        ./install_udev_rules.sh
 
 Ensure that your rules have been properly installed:
 
