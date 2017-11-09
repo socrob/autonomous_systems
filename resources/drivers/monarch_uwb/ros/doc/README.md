@@ -18,3 +18,34 @@ A nice visualization is available (check uwb_visualization.png file on this fold
 This visualizationis included in the sample launch file, however you have to add a marker topic in rviz to see them and the frame_id of the uwb needs to exist
 
 or be set as fixed frame.
+
+
+Bill of materials
+===
+
+- 2 Mini USB cables
+
+- 2 Kio tags (version 2)
+
+- 3 Kio anchors (version 2)
+
+- 3 anchor 5V power supply
+
+- 3 Micro USB cables
+
+I _______________________ confirm the reception of all the materials above listed under "bill of materials" section for
+
+the Autonomous Systems as part of my project inside Instituto Superior Tecnico Lisboa. I make myself responsible for
+
+this material and promise to return in good conditions.
+
+
+
+
+
+
+
+
+_______________________
+
+Signature and date
