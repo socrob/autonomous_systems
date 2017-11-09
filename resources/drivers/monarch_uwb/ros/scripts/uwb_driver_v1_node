@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import monarch_uwb_ros.uwb_driver_v1
+
+if __name__ == '__main__':
+    monarch_uwb_ros.uwb_driver_v1.main()

@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 
 '''
- * Copyright [2017] <Instituto Superior Tecnico>
- *
- * Author: Oscar Lima (olima@isr.tecnico.ulisboa.pt)
- *
- * Open source driver for the Ultra Wide Band sensor by Eliko:
- *
- *     https://www.eliko.ee/products/kio-rtls/
- *
- * partially based on the one:
- * Created on 20.02.2014
- * by @author: Fialho
+Copyright [2017] <Instituto Superior Tecnico>
+
+Author: Oscar Lima (olima@isr.tecnico.ulisboa.pt)
+
+Open source driver for the Ultra Wide Band sensor by Eliko:
+
+    https://www.eliko.ee/products/kio-rtls/
+
+partially based on the one:
+Created on 20.02.2014
+by @author: Fialho
 '''
 
 import serial
-import time
+import sys
 import numpy as np
 
 class UWBDriver(object):
@@ -26,7 +26,8 @@ class UWBDriver(object):
         try:
             self.serial_port = serial.Serial(port, 230400, timeout=0)
         except serial.SerialException:
-            self.log_err('Error while openning UWB tag serial port !')
+            self.log_err('Error while openning UWB tag serial port ! please make sure that : ' + port + ' exists')
+            sys.exit(0)
 
 
     def log_err(self, error_msg):
@@ -119,7 +120,6 @@ class UWBDriver(object):
             # no new data has been received in the serial port
             return None
         # read all data in the serial port
-        #data = self.serial_port.read_all()
         data = self.serial_port.read(self.serial_port.inWaiting())
         if debug:
             print '-- raw data --'

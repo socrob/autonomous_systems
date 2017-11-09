@@ -1,0 +1,6 @@
+# uwb ultra wide band range sensor
+SUBSYSTEM=="tty",KERNELS=="1-2.1:1.0",GROUP="dialout",MODE="0666",SYMLINK+="uwb/front_tag"
+SUBSYSTEM=="tty",KERNELS=="1-2.2:1.0",GROUP="dialout",MODE="0666",SYMLINK+="uwb/rear_tag"
+
+# 1 tag only udev rule
+# SUBSYSTEM=="tty",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",GROUP="dialout",MODE="0666",SYMLINK+="uwb/tag"

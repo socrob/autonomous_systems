@@ -97,11 +97,11 @@ class UWBVisualization(object):
             # identify anchor to set color
             if self.anchors_msg.anchors[i].anchor_id == 'A':
                 # color is transparency, r, g, b
-                color = [0.7, 0.0, 0.0, 1.0]
+                color = [0.3, 0.0, 0.0, 1.0]
             elif self.anchors_msg.anchors[i].anchor_id == 'B':
-                color = [0.7, 0.0, 1.0, 0.0]
+                color = [0.3, 0.0, 1.0, 0.0]
             else:
-                color = [0.7, 0.0, 1.0, 1.0]
+                color = [0.3, 1.0, 1.0, 0.0]
             # set red color is anchor is 0
             if self.anchors_msg.anchors[i].radius < 0.001:
                 color = [0.2, 1.0, 0.0, 0.0]

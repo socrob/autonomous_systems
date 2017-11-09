@@ -14,7 +14,7 @@
 import rospy
 import std_msgs.msg
 
-from monarch_uwb.uwb import UWBDriver
+from monarch_uwb.uwb_v2 import UWBDriver
 from monarch_uwb.msg import uwb_anchor, uwb_anchor_array
 
 class UWBDriverNode(object):
@@ -23,11 +23,11 @@ class UWBDriverNode(object):
     '''
     def __init__(self):
         # to control the frequency at which this node will run
-        self.loop_rate = rospy.Rate(rospy.get_param('~loop_rate', 1.0)) # set between 1 - 10
+        self.loop_rate = rospy.Rate(rospy.get_param('~loop_rate', 3.0))
         # get tag id from param server
         self.tag_id = rospy.get_param('~tag_id', 'front')
         # get the tag device port from param server
-        device = rospy.get_param('~device', '/dev/mbot/uwb')
+        device = rospy.get_param('~device', '/dev/uwb/front_tag')
         # get the reference frame in which the readings are comming from
         frame_id = rospy.get_param('~frame_id', self.tag_id + '_uwb_link')
         # create object of uwb class
@@ -42,9 +42,9 @@ class UWBDriverNode(object):
         self.anchorA_msg.anchor_id = 'A'
         self.anchorB_msg.anchor_id = 'B'
         self.anchorC_msg.anchor_id = 'C'
-        self.anchorA_msg.variance = 0.01
-        self.anchorA_msg.variance = 0.01
-        self.anchorA_msg.variance = 0.01
+        self.anchorA_msg.variance = None
+        self.anchorA_msg.variance = None
+        self.anchorA_msg.variance = None
         # create anchor msg array (will store anchors A, B, C)
         self.anchor_array_msg = uwb_anchor_array()
         self.anchor_array_msg.header.frame_id = frame_id
@@ -58,8 +58,6 @@ class UWBDriverNode(object):
         '''
         ultra wide band driver main loop
         '''
-        # trigger board to start getting values
-        self.tag.start_reading_acquisition()
         # give some time to the borad to get readings
         rospy.sleep(0.5)
         while not rospy.is_shutdown():
@@ -67,7 +65,7 @@ class UWBDriverNode(object):
             response = self.tag.read_anchors(debug=False)
             # check if response is valid
             if response == None:
-                rospy.logwarn('No msg received')
+                rospy.logwarn('No msg received, please lower the node frequency')
                 self.loop_rate.sleep()
                 continue
             # fill timestamp
@@ -93,8 +91,6 @@ class UWBDriverNode(object):
             self.uwb_pub.publish(self.anchor_array_msg)
             # sleep to control the node frequency
             self.loop_rate.sleep()
-        # send serial port command to stop the readings flow
-        self.tag.stop_reading_acquisition()
         # close serial port
         self.tag.close_port()
 

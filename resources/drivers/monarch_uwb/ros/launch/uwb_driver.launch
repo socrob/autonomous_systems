@@ -1,22 +1,29 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- NOTE: This is an example launch file, please do not modify ! -->
+  <!-- NOTE: This is an example launch file, please do not modify ! -->
 
-    <!-- the name of your tag, can be any, is just to differentiate in case you have many -->
-    <arg name="tag_id" default="front" />
+  <!-- the name of your tag, can be any, is just to differentiate in case you have many -->
+  <arg name="tag_id" default="front" />
+  
+  <!-- the version of tag that you have (typically v2)
+        open cutecom serial port terminal and answer: do you have to send "a" char to start readings?
+        or do they come automatically? if they come autom then you have v2 (requires all anchors to be connected) -->
+  <arg name="tag_version_v2" default="true" />
 
-    <!-- the physical address of your usb to serial port tag -->
-    <arg name="device" default="/dev/mbot/uwb" />
+  <!-- the physical address of your usb to serial port tag -->
+  <arg name="device" default="/dev/uwb/$(arg tag_id)_tag" />
 
-    <!-- the reference frame in which the range radius readings will come -->
-    <arg name="frame_id" default="$(arg tag_id)_uwb_link" />
+  <!-- the reference frame in which the range radius readings will come -->
+  <arg name="frame_id" default="$(arg tag_id)_uwb_link" />
 
-    <!-- the frequency at which the node will run, set between 1 - 10 maximum -->
-    <arg name="loop_rate" default="3.0" />
+  <!-- the frequency at which the node will run, set between 1 - 10 maximum -->
+  <arg name="loop_rate" default="3.0" />
 
-    <!-- Ultra Wide Band sensor ros wrapper driver -->
-    <node pkg="monarch_uwb" type="uwb_driver_node" name="uwb_driver_node" output="screen" >
+  <!-- select v1 or v2 UWB driver based on tag_version argument (set above on this file) -->
+    <!-- UWB v2 driver -->
+    <group if="$(arg tag_version_v2)">
+      <node pkg="monarch_uwb" type="uwb_driver_v2_node" name="$(arg tag_id)_uwb_driver_node" output="screen" required="true" >
         <param name="tag_id" value="$(arg tag_id)" />
         <param name="device" value="$(arg device)" />
         <param name="frame_id" value="$(arg frame_id)" />
@@ -24,14 +31,28 @@
 
         <!-- change topic name -->
         <remap from="~tag_readings" to="~$(arg tag_id)_tag_readings"/>
-    </node>
+      </node>
+    </group>
 
-    <!-- Ultra Wide Band sensor visualization with SPHERE marker -->
-    <node pkg="monarch_uwb" type="uwb_visualization_node" name="uwb_visualization_node" output="screen" >
-        <param name="loop_rate" value="10.0" />
+    <!-- UWB v1 driver -->
+    <group unless="$(arg tag_version_v2)">
+      <node pkg="monarch_uwb" type="uwb_driver_v1_node" name="$(arg tag_id)_uwb_driver_node" output="screen" required="true" >
+        <param name="tag_id" value="$(arg tag_id)" />
+        <param name="device" value="$(arg device)" />
+        <param name="frame_id" value="$(arg frame_id)" />
+        <param name="loop_rate" value="$(arg loop_rate)" />
 
         <!-- change topic name -->
-        <remap from="~tag_readings" to="uwb_driver_node/$(arg tag_id)_tag_readings"/>
-    </node>
+        <remap from="~tag_readings" to="~$(arg tag_id)_tag_readings"/>
+      </node>
+    </group>
+
+  <!-- Ultra Wide Band sensor visualization with SPHERE marker -->
+  <node pkg="monarch_uwb" type="uwb_visualization_node" name="$(arg tag_id)_uwb_visualization_node" output="screen" >
+    <param name="loop_rate" value="$(arg loop_rate)" />
+
+    <!-- change topic name -->
+    <remap from="~tag_readings" to="$(arg tag_id)_uwb_driver_node/$(arg tag_id)_tag_readings"/>
+  </node>
 
 </launch>
