@@ -1,0 +1,10 @@
+<launch>
+  <node name="fisheye_rectify" pkg="fisheye_camera" type="rectify" output="screen">
+    <remap from="image" to="camera/image_raw"/>
+  </node>
+
+  <node name="fisheye_visualizer" pkg="fisheye_camera" type="visualizer" output="screen">
+    <remap from="image" to="image_rect"/>
+  </node>
+
+</launch>
