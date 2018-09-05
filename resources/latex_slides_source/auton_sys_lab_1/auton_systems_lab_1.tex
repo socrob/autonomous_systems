@@ -1,0 +1,305 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{pifont}
+\usepackage{multimedia}
+
+\usepackage{listings}
+\lstset{language=C++}
+
+\usepackage{verbatim}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+
+\usepgflibrary{fpu}
+\usepgfplotslibrary{external} 
+
+\tikzexternalize
+\pgfplotsset{compat=1.8}
+
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+
+\usepackage{comment}
+
+\usepackage{multimedia}
+\usetikzlibrary{fit}
+
+\usetheme{Boadilla}
+%\usecolortheme{orchid}
+\usecolortheme{orchid}
+
+\definecolor{tecnico}{RGB}{0, 145, 218}
+\setbeamercolor{structure}{fg=tecnico}
+
+\title[Autonomous Systems Course]{Autonomous Systems}
+\subtitle{ROS practical session (week of 25.09)}
+\author[Oscar Lima]{Oscar Lima}
+\institute[ISR]{ISR: Institute for Systems and Robotics\\LARSyS: Laboratory for Robotics and Engineering Systems\\IST: Instituto Superior Tecnico, Lisboa Portugal}
+
+\titlegraphic{\centering\includegraphics[height=1.7cm]{logos/isr-lisboa-logo.png}\hspace*{0.0cm}\includegraphics[height=1.8cm]{logos/larsys_logo_new.png}\hspace*{0.0cm}\includegraphics[height=1.5cm]{logos/ist-logo.png}}
+
+\begin{document}
+
+%---------------------------------------------
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{Stage simulator\footnote{\url{http://playerstage.sourceforge.net/index.php?src=stage}}}
+	\begin{itemize}
+		\item Stage is a robot simulator from Richard Vaughan and contributors (1998-2009)
+		\item Simulates a population of mobile robots, sensors and objects in a two-dimensional bitmapped environment
+	\end{itemize}
+	
+	% one image
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=4.0cm]{images/stage_simulator.png}
+	\end{figure}
+
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{rosbash\footnote{\url{http://wiki.ros.org/rosbash}}}
+		
+	\begin{itemize}
+		\item Offers a set of shell commands for using ros with bash (linux terminal)
+		\item Most popular include:
+		\item roscd pkg\_name (cd to that pkg easily)
+		\item rosed pkg\_name filename (quickly edit a file)
+		\item roscat pkg\_name filename (quickly visualize a file in terminal)
+		\item enables tab completion on: roslaunch, rosparam, rosnode, rostopic, rosservice, rosmsg, rossrv, rosbag. 
+	\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{ROS pkg structure\footnote{\url{http://wiki.ros.org/Packages}}}
+
+	\begin{itemize}
+		\item ROS packages tend to follow a common structure
+		\item For python code it will look like this:
+	\end{itemize}
+
+	% one image
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=6.0cm]{images/ros_pkg_structure.png}
+	\end{figure}
+
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{Rviz\footnote{\url{http://wiki.ros.org/rviz}}}
+	
+	\begin{itemize}
+		\item Powerful tool for topic visualization
+		\item Useful for debugging
+		\item launch using : rosrun rviz rviz (a roscore must be running)
+		\item Can publish some topics (2D pose estimate, 2D nav goal, Point)
+		\item Is recommended to comply with ROS standard topics to enable topic visualization
+	\end{itemize}
+	
+	\centering
+	\url{https://www.youtube.com/watch?v=i--Sd4xH9ZE}
+
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{rostopic\footnote{\url{http://wiki.ros.org/rostopic}}}
+
+	\begin{itemize}
+		\item Displays information about ROS topics
+		\item Most useful:
+		\item rostopic list (get a list of active topics)
+		\item rostopic echo topic\_name
+		\item rostopic info topic\_name (get topic type, publishers and subscribers)
+		\item rostopic pub topic\_name topic\_type msg\_press\_tab! (publish a topic from console), options:
+		\begin{itemize}
+			\item no args (latched)
+			\item -r float\_number (at a certain rate)
+			\item - -once (latch for 3 secs, then dies)
+		\end{itemize}
+		\item rostopic hz topic\_name (get the publish frequency rate)
+	\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{rosrun\footnote{\url{http://wiki.ros.org/rosbash\#rosrun}}}
+	\begin{itemize}
+		\item Part of rosbash suite
+		\item requires a roscore running on your system
+		\item Usage: rosrun pkg\_name executable\_name
+		\item It will run ONLY executable files
+		\item About files being executable (important!)
+		\begin{itemize}
+			\item make sure your python nodes (i.e. my\_python\_node.py) are executable
+			\item check by doing: ls -l , if it has an x is executable (i.e. -rwxr--r--)
+			\item alternatively, if your terminal has colors, the file shows green when doing ls
+			\item rosrun will also look for your compiled c++ executables (under devel/lib/pkg\_name)
+		\end{itemize}
+		\item i.e. rosrun roscpp\_tutorials talker
+	\end{itemize}
+	
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{parameter server\footnote{\url{http://wiki.ros.org/Parameter\%20Server}}}
+	\begin{itemize}
+		\item Is a shared, multi-variate dictionary that is accessible via network API
+		\item Nodes can use this server to store or retrieve parameters during runtime
+		\item Is not high performance
+		\item Globally viewable
+		\item Usage from terminal: rosparam set param\_name param\_value, rosparam get param\_name
+		\item Usage from python api: rospy.set\_param(param\_name, param\_value), rospy.get\_param("param\_name")
+		\item Demo, set and get parameters
+	\end{itemize}
+	
+\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}{roslaunch\footnote{\url{http://wiki.ros.org/roslaunch}}}
+	
+	\begin{itemize}
+		\item A tool for easily launching multiple ROS nodes
+		\item Implemented to be used with XML syntax
+		\item Allows to set parameters in param server
+		\item Can run other launch files inside launch files
+		\item Run syntax: roslaunch pkg\_name my\_file.launch
+		\item By default runs a roscore if no one is found (not recommended, always run a separate roscore)
+		\item Usage: include $<?xml version="1.0"?>$ at the top of your launchfile
+		\item Create a launch file from scratch (demo)
+	\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------
+
+%\begin{frame}{tf \footnote{\url{http://wiki.ros.org/tf}}}
+%	\begin{itemize}
+%		\item Example tf tree for simulated pioneer + wall-e robot
+%	\end{itemize}
+%	
+%	%	% one image
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[height=6.0cm]{images/tf_tree_example.png}
+%	\end{figure}
+%	
+%\end{frame}
+
+%---------------------------------------------
+
+%\begin{frame}{tf (2 part)\footnote{\url{http://wiki.ros.org/tf}}}
+%	\begin{itemize}
+%		\item Example tf tree for simulated pioneer + wall-e robot
+%	\end{itemize}
+%
+%%	% one image
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[height=6.0cm]{images/tf_tree_example.png}
+%	\end{figure}
+%	
+%\end{frame}
+
+%---------------------------------------------
+
+%\begin{frame}{tf (3 part)\footnote{\url{http://wiki.ros.org/tf}}}
+%	\begin{itemize}
+%		\item A real world example (mbot robot)
+%	\end{itemize}
+%	
+%    % one image
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[height=6.0cm]{images/mbot_frames.png}
+%	\end{figure}
+%	
+%\end{frame}
+
+%---------------------------------------------
+
+%\begin{frame}{AMCL}
+%	\begin{itemize}
+%		\item todo
+%	\end{itemize}
+%	
+%	% one image
+%%	\begin{figure}[H]
+%%		\centering
+%%		\includegraphics[height=9cm]{images/corner_problem.pdf}
+%%	\end{figure}
+%	
+%\end{frame}
+
+%---------------------------------------------
+
+%\begin{frame}{GMapping}
+%	\begin{itemize}
+%		\item todo
+%	\end{itemize}
+%	
+%	% one image
+%	%	\begin{figure}[H]
+%	%		\centering
+%	%		\includegraphics[height=9cm]{images/corner_problem.pdf}
+%	%	\end{figure}
+%	
+%\end{frame}
+
+%----------------------------------------------
+
+%\begin{frame}{rosbag}
+%	\begin{itemize}
+%		\item use\_sim\_time parameter, and —clock option for rosbag
+%	\end{itemize}
+%	
+%	% one image
+%	%	\begin{figure}[H]
+%	%		\centering
+%	%		\includegraphics[height=9cm]{images/corner_problem.pdf}
+%	%	\end{figure}
+%	
+%\end{frame}
+
+%---------------------------------------------
+
+\begin{frame}
+\begin{LARGE}
+\begin{center}
+Thank you!\\
+
+Questions? :)\\
+
+\vspace*{1cm}
+
+\footnotesize
+If you have a question please create a Github issue so that we can all benefit from the posted answers under:
+\\
+\url{https://github.com/socrob/autonomous\_systems/issues}
+
+\vspace*{2cm}
+\end{center}
+\end{LARGE}
+\end{frame}
+
+%---------------------------------------------
+
+\end{document}

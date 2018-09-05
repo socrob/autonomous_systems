@@ -1,1 +1,12 @@
+# automatically generated python code
 *.pyc
+
+# Latex autogen code
+*.aux
+*.auxlock
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc

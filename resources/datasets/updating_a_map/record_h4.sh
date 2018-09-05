@@ -1,1 +1,0 @@
-rosbag record /amcl/parameter_descriptions /amcl/parameter_updates /amcl_pose /cmd_vel /cmd_vel_constant /cmd_vel_prio_high /cmd_vel_prio_low /cmd_vel_prio_medium /diagnostics /door_detector/event_in /door_detector/event_out /initialpose /joint_states /joy /map /map_metadata /map_updates /odom /particlecloud /rosout /rosout_agg /scan_combined /scan_front /scan_rear /tf /tf_static
