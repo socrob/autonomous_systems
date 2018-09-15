@@ -14,7 +14,7 @@ ROS Kinetic installation
 It is advisable to go for the Desktop-Full Instalation of ROS, please go through the instructions in the following link:
 http://wiki.ros.org/kinetic/Installation/Ubuntu
 
-Git and repo installation
+Git and Repository setup
 ===
 
 Install git on your system:
