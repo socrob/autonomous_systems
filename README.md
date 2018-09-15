@@ -1,14 +1,20 @@
 Autonomous Systems
 ===
 
-This repository holds code and resources for the Autonomous Systems course by Prof. Pedro Lima, Prof. Rodrigo Ventura and M.Sc. Oscar Lima Carrion
-which takes place at Instituto Superior Tecnico, Lisboa.
+This repository holds code and resources for the Autonomous Systems course by Prof. Pedro Lima and Prof. Rodrigo Ventura that takes place at Instituto Superior Tecnico, Lisboa.
 
-NOTE: The course expects you to have installed Ubuntu 16.04 and ROS Kinetic.
+For this course you will need to have a machine running Ubuntu, ROS and some other things, please follow the instructions bellow before the laboratory classes begin.
 
-Please follow these instructions:
+Ubuntu instalation
+===
+For the first classes you may use a virtual machine, but it is advisable, at some point, to use a native instalation of  [Ubuntu 16.04 64-bit](https://www.ubuntu.com/download/alternative-downloads) in order to prevent unwanted issues that may arise from the use of a virtual machine.
 
-Installation instructions
+ROS Kinetic installation
+===
+It is advisable to go for the Desktop-Full Instalation of ROS, please go through the following instructions:
+http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+Git and repo installation
 ===
 
 Install git on your system:
@@ -22,6 +28,10 @@ Navigate to your home folder:
 Clone the repository:
 
         git clone https://github.com/socrob/autonomous_systems.git
+
+Whenever the repo is updated you can get the latest updates with:
+
+        git pull origin master
 
 Setup catkin workspace and scripts structure (one time only)
 ===
@@ -69,14 +79,9 @@ Lab1
 
 Please open lab1 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside.
 
-lab2
+Lab2
 ===
-
-Lab 2 material will be published in this repository soon.
-
-To get updates you can do:
-
-        git pull origin master
+Please open lab2 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside.
 
 Questions
 ===
@@ -89,10 +94,8 @@ By creating an issue, so that we can all benefit from the answers.
 
 Thanks!
 
-Resources
+Extra Resources
 ===
-
-[ROS installation (kinetic)](http://wiki.ros.org/kinetic/Installation/Ubuntu)
 
 [Learn how to program in python, google developers nice online course](https://www.youtube.com/watch?v=tKTZoB2Vjuk&list=PL123FD827C7984559)
 
