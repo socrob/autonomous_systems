@@ -11,7 +11,7 @@ For the first classes you may use a virtual machine, but it is advisable, at som
 
 ROS Kinetic installation
 ===
-It is advisable to go for the Desktop-Full Instalation of ROS, please go through the following instructions:
+It is advisable to go for the Desktop-Full Instalation of ROS, please go through the instructions in the following link:
 http://wiki.ros.org/kinetic/Installation/Ubuntu
 
 Git and repo installation
