@@ -7,7 +7,7 @@ For this course you will need to have a machine running Ubuntu, ROS and some oth
 
 Ubuntu instalation
 ===
-For the first classes you may use a virtual machine, but it is advisable, at some point, to use a native instalation of  [Ubuntu 16.04 64-bit](https://www.ubuntu.com/download/alternative-downloads) in order to prevent unwanted issues that may arise from the use of a virtual machine.
+For the first classes you may use a virtual machine (in that case use this [image](http://soma.isr.ist.utl.pt/irsgroup/saut/ubuntu_16_04_64bit.vdi)), but it is advisable, at some point, to use a native instalation of  [Ubuntu 16.04 64-bit](https://www.ubuntu.com/download/alternative-downloads) in order to prevent unwanted issues that may arise from the use of a virtual machine.
 
 ROS Kinetic installation
 ===
