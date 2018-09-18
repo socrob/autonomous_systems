@@ -13,10 +13,6 @@ The objective of this lab is for you to get familiar with the following tools:
 - [Mapping](http://wiki.ros.org/gmapping)
 - [rosbag](http://wiki.ros.org/rosbag)
 
-Please update your repository to get the new lab2 material:
-
-        cd $HOME/autonomous_systems
-        git pull origin master
 
 tf
 ===
@@ -31,7 +27,7 @@ Some slides will be presented to you by Oscar Lima.
 tf simple example
 ===
 
-You will need 5 terminals for the next exercise, we advise you to use terminator
+You will need 5 terminals for the next exercise, we advise you to use terminator. If you didn't install it yet, please run:
 
         sudo apt-get install terminator
 
