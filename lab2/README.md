@@ -1,4 +1,4 @@
-lab2
+Lab2
 ===
 
 In today's lab we are going to work with the real hardware: [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
@@ -22,8 +22,6 @@ The following tutorial will help you to understand the [tf](http://wiki.ros.org/
 This [video](https://www.youtube.com/watch?v=2gVo06HR2Tc) from the creator of the tf library is very useful, however a little bit advanced.
 Make sure you understand the basics of tf before watching it.
 
-Some slides will be presented to you by Oscar Lima.
-
 tf simple example
 ===
 
@@ -31,12 +29,12 @@ You will need 5 terminals for the next exercise, we advise you to use terminator
 
         sudo apt-get install terminator
 
-Open terminator and configure to have 5 terminals
+Open terminator and configure it to have 5 terminals
 
         right mouse click -> split vertically
         right mouse click -> split horizontally ...etc
 
-run the following commands on each terminal:
+Run the following commands on each terminal:
 
         roscore
         rosrun tf static_transform_publisher 3 2 0 0 0 0 map odom 50
@@ -44,7 +42,7 @@ run the following commands on each terminal:
         rosrun tf tf_echo map base_link
         rosrun rviz rviz
 
-configure rviz:
+Configure rviz:
 
         set fixed frame as map
         add tf topic
