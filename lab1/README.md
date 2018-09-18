@@ -1,4 +1,4 @@
-Lab 1 instructions
+Lab 1
 ==================
 
 The goal for this lab is to get you introduced with ROS.
