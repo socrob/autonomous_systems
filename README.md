@@ -30,8 +30,13 @@ Clone the repository:
         git clone https://github.com/socrob/autonomous_systems.git
 
 Whenever the repo is updated you can get the latest updates with:
-
+        
+        cd $HOME/autonomous_systems
         git pull origin master
+
+(Optional) Terminator is a usefull tool when you want to have several terminals open. If you want to install it just run:
+
+        sudo apt-get install terminator
 
 Setup catkin workspace and scripts structure (one time only)
 ===
@@ -77,7 +82,7 @@ If you decide to do it manually (for didactic purposes) then please continue:
 Lab1
 ===
 
-Please open lab1 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside.
+Please open lab1 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside. To save time in class you can go through step 1 in advance.
 
 Lab2
 ===
