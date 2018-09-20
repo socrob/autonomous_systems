@@ -92,4 +92,4 @@ one posible solution for the problem in this lab.
 
 14. Check additional resources:
 
-[About the Pioneer (real) robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
+[About the Pioneer (real) robot](http://www.mobilerobots.com/Libraries/Downloads/Pioneer3DX-P3DX-RevA.sflb.ashx)
