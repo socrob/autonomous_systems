@@ -22,6 +22,7 @@ alias rotate_touchscreen='bash ${ROS_WORKSPACE}/isr_monarch_robot/mbot_drivers/i
 alias gen_urdf='rosrun xacro xacro.py `rospack find mbot_description`/urdf/mbot_body.urdf.xacro -o `pwd`/generated.urdf'
 alias open_network_manager='sudo nm-connection-editor' # needs the ssh connection to be made via ssh -X, opens gui for network manager
 alias enable_object_training='source ~/scripts/enable_object_trainning.sh'
+alias create_ros_pkg='source ~/scripts/create_ros_pkg.sh'
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively

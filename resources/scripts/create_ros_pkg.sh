@@ -9,10 +9,10 @@ fi
 
 # assign first received argument to variable PKG_NAME
 PKG_NAME=${1}
-AUTHOR_NAME='Oscar Lima'
-AUTHOR_EMAIL='olima@isr.tecnico.ulisboa.pt'
-MAINTAINER_NAME='Oscar Lima'
-MAINTAINER_EMAIL='olima@isr.tecnico.ulisboa.pt'
+AUTHOR_NAME='Autor Name'
+AUTHOR_EMAIL='autor.email@isr.tecnico.ulisboa.pt'
+MAINTAINER_NAME='Maintainer Name'
+MAINTAINER_EMAIL='maintainer.name@isr.tecnico.ulisboa.pt'
 
 # setup file content
 CMAKELISTS_CONTENT="cmake_minimum_required(VERSION 2.8.3)\nproject(${PKG_NAME})\n\nfind_package(catkin REQUIRED\n  COMPONENTS\n)\n\ncatkin_python_setup()\n\ncatkin_package(\n    CATKIN_DEPENDS\n)"
