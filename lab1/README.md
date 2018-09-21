@@ -40,7 +40,9 @@ You should be able to see now 2 robots: 1 pioneer and 1 wall-e
         press R -> perspective camera
         mouse right click -> drag to change the camera position
 
-6. open rviz and visualize some data:
+6. list the current topics:
+
+        rostopic list
 
 7. move the robot (rotate):
 
@@ -88,9 +90,13 @@ hint: follow the [tutorial](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSu
 
 you can run the file by copying the content of the file pioneer_behavior.py to the node of the package you created in the first step and the run the corresponding executable using rosrun.
 
-13. Watch the following youtube [video](https://youtu.be/IZcE1vrMCvM) to get see an example of
+13. in order to modify the wall threshold, for instance to 5.0m, you can do it via command line by setting the following parameter:
+
+        rosparam set /distance_threshold 5.0
+
+14. Watch the following youtube [video](https://youtu.be/IZcE1vrMCvM) to get see an example of
 one posible solution for the problem in this lab.
 
-14. Check additional resources:
+15. Check additional resources:
 
 [About the Pioneer (real) robot](http://www.mobilerobots.com/Libraries/Downloads/Pioneer3DX-P3DX-RevA.sflb.ashx)
