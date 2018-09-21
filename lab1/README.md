@@ -79,17 +79,14 @@ move the robot by pressing the following keys on your keyboard:
 
         rosservice call /reset_positions "{}"
 
-12. create a behavior for the pioneer robot so that moves forward until it has an obstacle at 0.2 m then stops rotates for some
-time to the right and then resumes motion.
+12. create a behavior for the pioneer robot so that moves forward until it has an obstacle at 1.0 m then stops and starts rotating to the right until the object is no longer so close. It should loop through this behaviour infinitely.
 
 hint: use the pioneer_behavior.py file (located on this folder) and complete the parts of the code that are missing.
 
 hint: follow the [tutorial](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
       it will help you to understand how to publish / subscribe to topics in ros using python code
 
-you can run the file by doing:
-
-        python pioneer_behavior.py
+you can run the file by copying the content of the file pioneer_behavior.py to the node of the package you created in the first step and the run the corresponding executable using rosrun.
 
 13. Watch the following youtube [video](https://youtu.be/IZcE1vrMCvM) to get see an example of
 one posible solution for the problem in this lab.
