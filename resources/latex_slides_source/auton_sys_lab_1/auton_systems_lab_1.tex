@@ -143,6 +143,21 @@
 
 %---------------------------------------------
 
+\begin{frame}{roslaunch\footnote{\url{http://wiki.ros.org/roslaunch}}}
+	
+	\begin{itemize}
+		\item A tool for easily launching multiple ROS nodes
+		\item Implemented with XML syntax (\textless launch\textgreater ... \textless /launch\textgreater)
+		\item Allows to load parameters to param server
+		\item A launch file can call other launch files
+		\item Launch a node \textless node pkg=”...” type=”...” name=”...” respawn=true ns=”...”/\textgreater
+		\item Run syntax: roslaunch pkg\_name my\_file.launch
+	\end{itemize}
+	
+\end{frame}
+
+%---------------------------------------------
+
 \begin{frame}{parameter server\footnote{\url{http://wiki.ros.org/Parameter\%20Server}}}
 	\begin{itemize}
 		\item Is a shared, multi-variate dictionary that is accessible via network API
@@ -154,21 +169,6 @@
 		\item Suitable for for static, non-binary data such as configuration parameters
 	\end{itemize}
 	
-\end{frame}
-
-%---------------------------------------------
-
-\begin{frame}{roslaunch\footnote{\url{http://wiki.ros.org/roslaunch}}}
-	
-	\begin{itemize}
-		\item A tool for easily launching multiple ROS nodes
-		\item Implemented with XML syntax (\textless launch\textgreater ... \textless /launch\textgreater)
-		\item Allows to load parameters to param server
-		\item A launch file can call other launch files
-		\item Launch a node \textless node pkg=”...” type=”...” name=”...” respawn=true ns=”...”/\textgreater
-		\item Run syntax: roslaunch pkg\_name my\_file.launch
-	\end{itemize}
-
 \end{frame}
 
 %---------------------------------------------
