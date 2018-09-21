@@ -6,6 +6,10 @@ The goal for this lab is to get you introduced with ROS.
 For this lab we are going to work with [stage](http://rtv.github.io/Stage/) simulator.
 The following instructions have been tested under Ubuntu 16.04 and ROS kinetic.
 
+0. To create a package we placed a script in the resources folder, to help you in this process. You just need to run the command bellow:
+
+        source ~/<PATH TO YOUR GIT REPO>/autonomous_systems/resources/scripts/create_ros_pkg.sh <Name of your Awesome Package>
+
 1. Install ros stage
 
         sudo apt install ros-kinetic-stage-ros
