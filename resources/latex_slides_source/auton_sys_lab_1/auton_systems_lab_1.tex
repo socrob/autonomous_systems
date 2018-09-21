@@ -106,14 +106,30 @@
 
 %---------------------------------------------
 
+\begin{frame}{Stage simulator\footnote{\url{http://playerstage.sourceforge.net/index.php?src=stage}}}
+	\begin{itemize}
+		\item Stage is a robot simulator from Richard Vaughan and contributors (1998-2009)
+		\item Simulates a population of mobile robots, sensors and objects in a two-dimensional bitmapped environment
+	\end{itemize}
+	
+	% one image
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=4.0cm]{images/stage_simulator.png}
+	\end{figure}
+	
+\end{frame}
+
+%---------------------------------------------
+
 \begin{frame}{rostopic\footnote{\url{http://wiki.ros.org/rostopic}}}
 
 	\begin{itemize}
 		\item Displays information about ROS topics
 		\item Most useful:
 		\item rostopic list (get a list of active topics)
-		\item rostopic echo topic\_name
 		\item rostopic info topic\_name (get topic type, publishers and subscribers)
+		\item rostopic echo topic\_name
 		\item rostopic pub topic\_name topic\_type msg\_press\_tab! (publish a topic from console), options:
 		\begin{itemize}
 			\item no args (latched)
@@ -146,9 +162,10 @@
 	
 	\begin{itemize}
 		\item A tool for easily launching multiple ROS nodes
-		\item Implemented with XML syntax
-		\item Allows to set parameters in param server
+		\item Implemented with XML syntax (\textless launch\textgreater ... \textless /launch\textgreater)
+		\item Allows to load parameters to param server
 		\item A launch file can call other launch files
+		\item Launch a node \textless node pkg=”...” type=”...” name=”...” respawn=true ns=”...”/\textgreater
 		\item Run syntax: roslaunch pkg\_name my\_file.launch
 	\end{itemize}
 
@@ -170,22 +187,6 @@
 	
 	\centering
 	\url{https://www.youtube.com/watch?v=i--Sd4xH9ZE}
-	
-\end{frame}
-
-%---------------------------------------------
-
-\begin{frame}{Stage simulator\footnote{\url{http://playerstage.sourceforge.net/index.php?src=stage}}}
-	\begin{itemize}
-		\item Stage is a robot simulator from Richard Vaughan and contributors (1998-2009)
-		\item Simulates a population of mobile robots, sensors and objects in a two-dimensional bitmapped environment
-	\end{itemize}
-	
-	% one image
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=4.0cm]{images/stage_simulator.png}
-	\end{figure}
 	
 \end{frame}
 
