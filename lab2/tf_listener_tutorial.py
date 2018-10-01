@@ -16,11 +16,11 @@ if __name__ == '__main__':
         try:
             # listen to transform
             (trans,rot) = listener.lookupTransform('/map', '/base_link', rospy.Time(0))
+            # print the transform
+            rospy.loginfo('---------')
+            rospy.loginfo('Translation: ' + str(trans))
+            rospy.loginfo('Rotation: ' + str(rot))
         except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
             continue
-        # print the transform
-        rospy.loginfo('---------')
-        rospy.loginfo('x = ' + str(trans[0]))
-        rospy.loginfo('y = ' + str(trans[1]))
         # sleep to control the node frequency
         rate.sleep()
