@@ -86,7 +86,7 @@ To install ARIA on your system (from [mobile robots ARIA wiki](http://robots.mob
 
         cd $HOME/Downloads
         wget http://robots.mobilerobots.com/ARIA/download/current/libaria_2.9.4+ubuntu16_amd64.deb
-        sudo dpkg -i libaria_2.9.1a+ubuntu16_amd64.deb
+        sudo dpkg -i libaria_2.9.4+ubuntu16_amd64.deb
 
 To install the ros wrapper:
 
