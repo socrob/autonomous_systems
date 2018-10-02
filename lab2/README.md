@@ -181,7 +181,7 @@ Make sure the teleoperation node is installed:
 
 Run the teleoperation:
 
-        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
+        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel
 
 Move the robot by pressing the following keys on your keyboard:
 
