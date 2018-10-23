@@ -85,8 +85,8 @@ There are Open source C++ development libraries ([ARIA](http://www.mobilerobots.
 To install ARIA on your system (from [mobile robots ARIA wiki](http://robots.mobilerobots.com/wiki/ARIA)) do:
 
         cd $HOME/Downloads
-        wget http://robots.mobilerobots.com/ARIA/download/current/libaria_2.9.1a+ubuntu16_amd64.deb
-        sudo dpkg -i libaria_2.9.1a+ubuntu16_amd64.deb
+        wget http://robots.mobilerobots.com/ARIA/download/current/libaria_2.9.4+ubuntu16_amd64.deb
+        sudo dpkg -i libaria_2.9.4+ubuntu16_amd64.deb
 
 To install the ros wrapper:
 
@@ -100,7 +100,7 @@ Install udev rules on your system:
 
 Udev rules have 2 purposes: a) they create a simlink to the physical device b) they provide with adecuate admin rights to write to the serial port 
 
-        cd $HOME/autonomous_systems/resources/scripts/udev_rules/install_udev_rules.sh
+        cd $HOME/autonomous_systems/resources/scripts/udev_rules/
         ./install_udev_rules.sh
 
 Ensure that your rules have been properly installed:
@@ -160,6 +160,10 @@ Make sure you can ping the robot laptop from the command laptop. (replace IP_ADD
 
         ping IP_ADDRESS_OF_ROBOT_LAPTOP
 
+In both laptops type the following command to define your ROS ip. Replace IP_ADDRESS by the ip of your laptop when executing it in your laptop and the ip of the robot's laptop when running in the robot's laptop.
+
+        export ROS_IP=IP_ADDRESS
+
 Tell the command laptop that the roscore is running on another PC (replace IP_ADDRESS_OF_ROBOT_LAPTOP with the value obtained from previous step):
 
         export ROS_MASTER_URI=http://IP_ADDRESS_OF_ROBOT_LAPTOP:11311
@@ -181,7 +185,7 @@ Make sure the teleoperation node is installed:
 
 Run the teleoperation:
 
-        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
+        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel
 
 Move the robot by pressing the following keys on your keyboard:
 
