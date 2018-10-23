@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>  
+
+    <!-- hokuyo usb port paths -->
+    <arg name="hokuyo_front_port" default="/dev/mbot/hokuyo-front" />
+    <arg name="hokuyo_rear_port" default="/dev/mbot/hokuyo-rear" />
+
+    <!-- front laser scanner driver -->
+    <node pkg="urg_node" type="urg_node" name="hokuyo_node_front">
+      <remap from="/scan" to="scan_front" />
+      <param name="ip_address" value=""/>
+      <param name="serial_port" value="$(arg hokuyo_front_port)"/>
+      <param name="serial_baud" value="115200"/>
+      <param name="frame_id" value="base_laser_front_link"/>
+      <param name="calibrate_time" value="true"/>
+      <param name="publish_intensity" value="false"/>
+      <param name="publish_multiecho" value="false"/>
+      <param name="angle_min" value="-1.5707963"/>
+      <param name="angle_max" value="1.5707963"/>
+    </node>
+
+    <!-- rear laser scanner driver -->
+    <node pkg="urg_node" type="urg_node" name="hokuyo_node_rear">
+      <remap from="/scan" to="scan_rear" />
+      <param name="ip_address" value=""/>
+      <param name="serial_port" value="$(arg hokuyo_rear_port)"/>
+      <param name="serial_baud" value="115200"/>
+      <param name="frame_id" value="base_laser_rear_link"/>
+      <param name="calibrate_time" value="true"/>
+      <param name="publish_intensity" value="false"/>
+      <param name="publish_multiecho" value="false"/>
+      <param name="angle_min" value="-1.5707963"/>
+      <param name="angle_max" value="1.5707963"/>
+    </node>
+
+</launch>
