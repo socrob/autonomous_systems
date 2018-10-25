@@ -30,7 +30,8 @@ while (True):
         # get the magnetometer packet
         mag_data = sconn.read_all()
         print(mag_data)
-
+        
+        # values in microtesla
         X = Y = Z = 0
         if (mag_data):
             for index in range(len(mag_data)):
