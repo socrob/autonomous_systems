@@ -25,13 +25,19 @@ class UWBDriverNode(object):
         # to control the frequency at which this node will run
         self.loop_rate = rospy.Rate(rospy.get_param('~loop_rate', 3.0))
         # get tag id from param server
-        self.tag_id = rospy.get_param('~tag_id', 'front')
+        # self.tag_id = rospy.get_param('~tag_id', 'front')
+        self.tag_id = 'front'
         # get the tag device port from param server
-        device = rospy.get_param('~device', '/dev/uwb/front_tag')
+        device = 'ttyUSB0'
+        # device = rospy.get_param('~device', '/dev/uwb/front_tag')
         # get the reference frame in which the readings are comming from
-        frame_id = rospy.get_param('~frame_id', self.tag_id + '_uwb_link')
+        frame_id = 'tag1_uwb_link'
+        # frame_id = rospy.get_param('~frame_id', self.tag_id + '_uwb_link')
         # create object of uwb class
+        
         self.tag = UWBDriver(device)
+
+
         # setup uwb readings publisher
         self.uwb_pub = rospy.Publisher('~tag_readings', uwb_anchor_array, queue_size=1)
         # create single anchor msgs
@@ -96,6 +102,7 @@ class UWBDriverNode(object):
 
 
 def main():
+    print('HEEY ')
     # create and register node in the network
     rospy.init_node('uwb_driver_node', anonymous=False)
     # create object of UWBDriverNode class (constructor will get executed one time only)
