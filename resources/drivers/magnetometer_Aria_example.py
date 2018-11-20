@@ -59,9 +59,9 @@ while (True):
 
         time.sleep(1)
 
-    except Exception as e:
+    except:
         # send command to stop stream
         mag_obj.commandOff()
         # close serial connection
         sconn.close()
-        raise e
+        raise
