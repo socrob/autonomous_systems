@@ -1,7 +1,7 @@
 Autonomous Systems
 ===
 
-This repository holds code and resources for the Autonomous Systems course by Prof. Pedro Lima and Prof. Rodrigo Ventura that takes place at Instituto Superior Tecnico, Lisboa.
+This repository holds code and resources for the Autonomous Systems course that takes place at Instituto Superior Tecnico, Lisboa.
 
 For this course you will need to have a machine running Ubuntu, ROS and some other things, please follow the instructions bellow before the laboratory classes begin.
 
