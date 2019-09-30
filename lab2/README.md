@@ -132,7 +132,8 @@ Test your pioneer installation
 Keep in mind that will need several terminals to complete this steps:
 
         roscore
-        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port && rosrun rosaria RosAria
+        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port
+        rosrun rosaria RosAria
 
 Move the robot:
 
