@@ -102,6 +102,8 @@ Thanks!
 Extra Resources
 ===
 
+[Wiki with summarized information about system setup, git useful commands and information about the robots](https://github.com/socrob/autonomous_systems/wiki)
+
 [Learn how to program in python, google developers nice online course](https://www.youtube.com/watch?v=tKTZoB2Vjuk&list=PL123FD827C7984559)
 
 [ROS python example on how to publish / subcribe from code](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
