@@ -3,6 +3,7 @@ Lab2
 
 In today's lab we are going to work with the real hardware: [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
 
+
 The objective of this lab is for you to get familiar with the following tools:
 
 - [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
@@ -12,6 +13,8 @@ The objective of this lab is for you to get familiar with the following tools:
 - [AMCL](http://wiki.ros.org/amcl)
 - [Mapping](http://wiki.ros.org/gmapping)
 - [rosbag](http://wiki.ros.org/rosbag)
+
+**Note:** If you will work with [RAPOSA-NG](http://socrob-archive.isr.ist.utl.pt/dokuwiki/doku.php?id=socrobrescue:socrobrescue) or [MBot](https://irsgroup.isr.tecnico.ulisboa.pt/projects/socrob-home/), you can find information in the [wiki](https://github.com/socrob/autonomous_systems/wiki) 
 
 
 tf
