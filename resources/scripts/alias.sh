@@ -1,3 +1,9 @@
+# socrob alias: used to save time in typing commands
+source ${HOME}/scripts/utils.sh
+
+export MBOT_IP=10.2.0.23   # mbot5
+export MBOT_IP_7=10.2.0.21  # mbot7
+
 # socrob robocup alias
 alias kill_all_ros_nodes='sudo pkill -f ros'
 alias launch_mbot_ros_driver_manually='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
@@ -50,13 +56,14 @@ alias remove_endline_spaces="sed -i 's/\s*$//'" # remove automatically spaces at
 alias poweroff='sudo shutdown -h now'
 
 # ssh alias
-alias mbot='ssh socrob@10.1.15.14' # alias to quickly ssh into nav robot pc
-alias mbot2='ssh socrob@10.1.15.15' # alias to quickly ssh into hri robot pc
+alias mbot='ssh socrob@$MBOT_IP' # alias to quickly ssh into nav robot pc
+alias mbot7='ssh socrob@$MBOT_IP_7' # alias to quickly ssh into hri robot pc
 alias harode='ssh harode@10.0.2.69' # alias to quickly ssh into harode workstation
 alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh harode pc from outside ist
 
 # export ROS_MASTER_URI alias
-alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
+alias export_mbot='export ROS_MASTER_URI=http://$MBOT_IP:11311 && export ROS_IP=`get_interface_that_pings $MBOT_IP | get_ip_of_interface`'
+alias export_mbot7='export ROS_MASTER_URI=http://$MBOT_IP_7:11311 && export ROS_IP=`get_interface_that_pings $MBOT_IP_7 | get_ip_of_interface`'
 alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311'
 alias export_dante='export ROS_MASTER_URI=http://10.0.1.23:11311'
 
