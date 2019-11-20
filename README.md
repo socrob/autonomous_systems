@@ -43,12 +43,6 @@ Setup catkin workspace and scripts structure (one time only)
 
 A partial documentation of this can be found [here](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and [here](http://catkin-tools.readthedocs.io/en/latest/index.html)
 
-For convenience and to save you time you can run a script to perform the instructions on this block by doing:
-
-        bash ~/autonomous_systems/resources/auton_sys_setup.sh
-
-If you have used the automated script you can skip to section Lab1 below.
-
 If you decide to do it manually (for didactic purposes) then please continue:
 
 1. Create a folder for your ros workspace in your system:
