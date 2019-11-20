@@ -43,8 +43,6 @@ Setup catkin workspace and scripts structure (one time only)
 
 A partial documentation of this can be found [here](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) and [here](http://catkin-tools.readthedocs.io/en/latest/index.html)
 
-If you decide to do it manually (for didactic purposes) then please continue:
-
 1. Create a folder for your ros workspace in your system:
 
         mkdir -p ~/ros_ws/src
