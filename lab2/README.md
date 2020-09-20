@@ -101,37 +101,67 @@ Robot Simulator Instalation
 If you haven´t already done this, you can download the robot simulator from this [link](https://link.com)
 
 
-Move the robot
-===
+Run the Simulation
+==
 
-You can move the robot by sending a direct command to the topic: (CHECK TOPIC NAME)
+0. Run the simulation by launching roscore in a terminal:
 
-        rostopic pub -r 10 /RosAria/cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
+       roscore
+       
+1. In another terminal launch the gazebo environment and the simulated robot:
 
-Open rviz and visualize sensors data:
+       roslaunch TODO
+       
+2. View the topics launched:
 
-        rosrun rviz rviz
+       rostopic list
+       
+    **Note**: You can search for some specific topic by running
+       
+       rostopic list | grep <keyword>
+       
+3. move the robot (rotate):
 
-Pioneer robot teleoperation
-===
+    ```bash
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
+    ```
+    
+4. move the robot (forward):
 
-For this exercise you first need to run roscore:
+    ```bash
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+    ```
 
-        roscore
-        
-Then, in another terminal, make sure you have the teleoperation node installed:
+5. Analyze a bit the situation:
 
-        sudo apt-get install ros-kinetic-teleop-twist-keyboard
+    * If you want more information about rostopic command, check the following website: http://wiki.ros.org/rostopic
 
-Run the teleoperation:
+    * Check at which rate is publishing the data:
 
-        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel         (Check topic)
+        ```bash
+        rostopic hz /cmd_vel
+        ```
 
-Move the robot by pressing the following keys on your keyboard:
+    * Echo the data on another terminal:
 
+        ```bash
+        rostopic echo /cmd_vel
+        ```
+
+6. teleoperate the robot with the keyboard
+
+    ```bash
+    sudo apt-get install ros-kinetic-teleop-twist-keyboard
+    rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/robot_0/cmd_vel
+    ```
+
+    * move the robot by pressing the following keys on your keyboard:
+
+        ```
         u    i    o
         j    k    l
         m    ,    .
+        ```
 
 rosbag
 ===
