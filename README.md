@@ -74,11 +74,12 @@ A partial documentation of this can be found [here](http://wiki.ros.org/catkin/T
 Lab1
 ===
 
-Please open lab1 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside. To save time in class you can go through step 1 in advance.
+Labs material will be uploaded soon.
 
 Lab2
 ===
-Please open lab2 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside.
+
+Labs material will be uploaded soon.
 
 Questions
 ===
