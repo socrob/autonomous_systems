@@ -1,12 +1,12 @@
 Lab2
 ===
 
-In today's lab we are going to work with the real hardware: [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
+In today's lab you are going to work with the real simulator: [Turtlebot3](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 
 
 The objective of this lab is for you to get familiar with the following tools:
 
-- [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
+- [turtlebot3 robot](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 - [tf](http://wiki.ros.org/tf)
 - [URDF](http://wiki.ros.org/urdf)
 - [robot state publisher](http://wiki.ros.org/robot_state_publisher)
@@ -14,8 +14,22 @@ The objective of this lab is for you to get familiar with the following tools:
 - [Mapping](http://wiki.ros.org/gmapping)
 - [rosbag](http://wiki.ros.org/rosbag)
 
-**Note:** If you will work with [RAPOSA-NG](http://socrob-archive.isr.ist.utl.pt/dokuwiki/doku.php?id=socrobrescue:socrobrescue) or [MBot](https://irsgroup.isr.tecnico.ulisboa.pt/projects/socrob-home/), you can find information in the [wiki](https://github.com/socrob/autonomous_systems/wiki) 
 
+Before the Lab
+===
+Before the lab you should install the simulator and terminator by typing
+
+    sudo apt-get install terminator
+    
+    sudo apt-get install ros-kinetic-turtlebot3
+    
+    cd ~/catkin_ws/src
+    
+    git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+
+    catkin build (or cb if you have the aliases)
+
+    source ~/.bashrc (or S if you have the aliases)
 
 tf
 ===
@@ -28,14 +42,10 @@ Make sure you understand the basics of tf before watching it.
 tf simple example
 ===
 
-You will need 5 terminals for the next exercise, we advise you to use terminator. If you didn't install it yet, please run:
-
-        sudo apt-get install terminator
-
 Open terminator and configure it to have 5 terminals
 
-        right mouse click -> split vertically
-        right mouse click -> split horizontally ...etc
+        right mouse click (ctrl + shift + e) -> split vertically
+        right mouse click (ctrl + shift + o) -> split horizontally ...etc
 
 Run the following commands on each terminal:
 
@@ -78,123 +88,96 @@ The above command goes to a temp folder, runs tf2_tools view_frames.py node that
 
 Aditionally at home you can make the [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29) if you want.
 
-Pioneer robot driver installation
+Robot Simulator Instalation
 ===
 
-You can find the pioneer datasheet in the [resources folder](https://github.com/socrob/autonomous_systems/tree/master/resources)
+If you haven´t already done this, you can download the robot simulator as instructed above.
 
-There are Open source C++ development libraries ([ARIA](http://www.mobilerobots.com/Software/ARIA.aspx)) provided by the manufacturer to control the robot via serial port. These libraries are ROS independent, however there is also a ROS wrapper available here : [rosaria ROS wrapper](http://wiki.ros.org/ROSARIA)
 
-To install ARIA on your system (from [mobile robots ARIA wiki](http://robots.mobilerobots.com/wiki/ARIA)) do:
+Run the Simulation
+==
 
-        cd $HOME/autonomous_systems/resources
-        sudo dpkg -i libaria_2.9.4+ubuntu16_amd64.deb
+0. Run the simulation by launching roscore in a terminal:
 
-To install the ros wrapper:
+       roscore
+       
+1. In another terminal launch the gazebo environment and the simulated robot:
 
-        source ~/.bashrc
-        cd $ROS_WORKSPACE
-        git clone https://github.com/amor-ros-pkg/rosaria.git
-        catkin build rosaria
-        source ~/.bashrc
+       roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+or
 
-Install udev rules on your system:
+       roslaunch turtlebot3_gazebo turtlebot3_world.launch
+       
+2. View the topics launched:
 
-Udev rules have 2 purposes: a) they create a simlink to the physical device b) they provide with adecuate admin rights to write to the serial port 
+       rostopic list
+       
+    **Note**: You can search for some specific topic by running
+       
+       rostopic list | grep <keyword>
+       
+3. View the nodes running:
 
-        cd $HOME/autonomous_systems/resources/scripts/udev_rules/
-        ./install_udev_rules.sh
+       rosnode list
+       
+4. View the parameter server:
 
-Ensure that your rules have been properly installed:
+       rosparam list
+       
+5. move the robot (rotate):
 
-Disconnect and connect the robot USB to serial converter cable
+       rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
+    
+6. move the robot (forward):
 
-        ls /dev/pioneer/usb_to_serial_port
+       rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
 
-The file should exist! (is a simlink to the port with write permissions)
+7. Analyze a bit the situation:
 
-NOTE: If the above udev rules did not work, you could always do:
+    * If you want more information about rostopic command, check the following website: http://wiki.ros.org/rostopic
 
-        sudo chmod a+rw /dev/ttyUSB0
+    * Check at which rate is publishing the data:
 
-Keep in mind this last one has the disadvantage that you need to do it every time you unplug-plug the usb to serial adaptor.
+        ```bash
+        rostopic hz /cmd_vel
+        ```
 
-Your pioneer port
-===
+    * Echo the data on another terminal:
 
-Should be one of this two:
+        ```bash
+        rostopic echo /cmd_vel
+        ```
 
-        /dev/ttyUSB0
-        /dev/pioneer/usb_to_serial_port
+8. teleoperate the robot with the keyboard
 
-Depending on which branch of the tutorial you have decided (or managed) to follow.
+    ```bash
+    sudo apt-get install ros-kinetic-teleop-twist-keyboard
+    rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
+    ```
 
-Test your pioneer installation
-===
+    * move the robot by pressing the following keys on your keyboard:
 
-Keep in mind that will need several terminals to complete this steps:
-
-        roscore
-        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port
-        rosrun rosaria RosAria
-
-Move the robot:
-
-        rostopic pub -r 10 /RosAria/cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
-
-Open rviz and visualize sonar data:
-
-        rosrun rviz rviz
-
-Pioneer robot teleoperation
-===
-
-For this exercise you will need two laptops connected to the same network, one connected to the robot via usb cable (robot laptop) and another one
-
-from which the teleoperation node will be running (command laptop).
-
-Get the ip adress of the robot laptop:
-
-        ifconfig
-
-Look the value in front of "inet addr", you are going to use it in the next step.
-        
-Make sure you can ping the robot laptop from the command laptop. (replace IP_ADDRESS_OF_ROBOT_LAPTOP with the value obtained from previous step):
-
-        ping IP_ADDRESS_OF_ROBOT_LAPTOP
-
-In both laptops type the following command to define your ROS ip. Replace IP_ADDRESS by the ip of your laptop when executing it in your laptop and the ip of the robot's laptop when running in the robot's laptop.
-
-        export ROS_IP=IP_ADDRESS
-
-Tell the command laptop that the roscore is running on another PC (replace IP_ADDRESS_OF_ROBOT_LAPTOP with the value obtained from previous step):
-
-        export ROS_MASTER_URI=http://IP_ADDRESS_OF_ROBOT_LAPTOP:11311
-
-Run the robot driver on the robot laptop (needs two terminals):
-
-        roscore
-        rosparam set RosAria/port /dev/pioneer/usb_to_serial_port && rosrun rosaria RosAria
-        
-Test moving the robot from the command laptop:
-
-        rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
-        
-If the robot moves then stop it: do ctrl + c on the "rostopic pub terminal" (to kill the process) and run the teleoperation with keyboard:
-
-Make sure the teleoperation node is installed:
-
-        sudo apt-get install ros-kinetic-teleop-twist-keyboard
-
-Run the teleoperation:
-
-        rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/RosAria/cmd_vel
-
-Move the robot by pressing the following keys on your keyboard:
-
+        ```
         u    i    o
         j    k    l
         m    ,    .
+        ```
+
+rosbag
+===
+
+Keep the simulation runing and record a rosbag by moving into the directory you wish to have the rosbag recorded and typing
+
+        rosbag record -a
+        
+And then move the robot around with teleoperation for some seconds. When you wish to stop just press Ctrl + C in the rosbag record terminal.
+        
+You can choose the topics you want to record instead of recording everything.
+
+Kill the simulation and all rosnodes, and run your bag by running this command in the rosbag directory
+
+        rosbag play <the name f your rosbag>
+
 
 rosbag + AMCL
 ===
@@ -211,9 +194,15 @@ Build your catkin workspace:
         roscd
         catkin build
         source ~/.bashrc
+        
+More on turtlebot simulation
+===
+
+If you visit the link https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#ros-1-simulation you will find many tutorials that you can follow to get more used to ROS, gazebo, SLAM, localization, ...
 
 Localize the robot
 ===
+For even more localization practise you can do the following:
 
 Kill all previous ros nodes and start freshly
 
