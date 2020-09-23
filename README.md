@@ -73,12 +73,12 @@ A partial documentation of this can be found [here](http://wiki.ros.org/catkin/T
 
 Lab1
 ===
-
 Please open lab1 folder to access the lab slides.
 
 Lab2
 ===
 Please open lab2 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside. You should follow the instructions in the **Before the Lab** section so you can perform the tasks during the lab. This lab will be more hands on than the previous, and you are expected to experiment ROS yourself.
+
 
 Questions
 ===
