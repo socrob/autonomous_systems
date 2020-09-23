@@ -6,7 +6,7 @@ PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/personal_config.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
 # set this env, only if it does not previously exist, (override in personal_config.sh if required)
-export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/ros_ws/src}
+export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/catkin_ws/src}
 
 # source a catkin workspace
 source $HOME/scripts/source_ros_workspace.sh
