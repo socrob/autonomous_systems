@@ -10,6 +10,18 @@ alias rviz='rosrun rviz rviz'
 alias tf_view_frames='cd /var/tmp && rosrun tf2_tools view_frames.py && evince frames.pdf &' # view current frames
 alias cb='catkin build'
 alias cbt='catkin build --this'
+alias S='source ${HOME}/.bashrc'
+
+# ROS bash alias
+alias r='rviz'
+alias rc='roscore'
+alias rt='rostopic'
+alias rs='rosservice'
+alias rn='rosnode'
+alias rl='roslaunch'
+alias rr='rosrun'
+alias rb='rosbag'
+alias rcd='roscd'
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
