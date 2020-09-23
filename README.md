@@ -45,7 +45,7 @@ A partial documentation of this can be found [here](http://wiki.ros.org/catkin/T
 
 1. Create a folder for your ros workspace in your system:
 
-        mkdir -p ~/ros_ws/src
+        mkdir -p ~/catkin_ws/src
 
 2. Install python catkin tools (to be able to compile with the new catkin build system, instead of catkin_make which is the old one)
 
@@ -57,7 +57,7 @@ A partial documentation of this can be found [here](http://wiki.ros.org/catkin/T
 
 4. Compile your workspace:
 
-        cd ~/ros_ws && catkin build
+        cd ~/catkin_ws && catkin build
 
 5. Add lines of code to your .bashrc to source the scripts configuration files
 
