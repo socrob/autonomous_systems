@@ -1,12 +1,12 @@
 Lab2
 ===
 
-In today's lab you are going to work with the real simulator: [TODO: CHOOSE ROBOT pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
+In today's lab you are going to work with the real simulator: [Turtlebot3](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 
 
 The objective of this lab is for you to get familiar with the following tools:
 
-- [pioneer robot](http://www.mobilerobots.com/ResearchRobots/PioneerP3DX.aspx)
+- [turtlebot3 robot](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
 - [tf](http://wiki.ros.org/tf)
 - [URDF](http://wiki.ros.org/urdf)
 - [robot state publisher](http://wiki.ros.org/robot_state_publisher)
@@ -19,20 +19,17 @@ Before the Lab
 ===
 Before the lab you should install the simulator and terminator by typing
 
-    sudo apt-get install smthg
     sudo apt-get install terminator
     
+    sudo apt-get install ros-kinetic-turtlebot3
+    
+    cd ~/catkin_ws/src
+    
+    git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 
+    catkin build (or cb if you have the aliases)
 
-How you can create a new package
-===
-
-To create a new package we placed a script in the resources folder, to help you in this process. You just need to modify and run the command bellow:
-
-    ```bash
-    source ~/<PATH TO YOUR GIT REPO>/autonomous_systems/resources/scripts/create_ros_pkg.sh <Name of your Awesome Package>
-    ```
-
+    source ~/.bashrc (or S if you have the aliases)
 
 tf
 ===
@@ -45,14 +42,10 @@ Make sure you understand the basics of tf before watching it.
 tf simple example
 ===
 
-You will need 5 terminals for the next exercise, we advise you to use terminator. If you didn't install it yet, please run:
-
-        sudo apt-get install terminator
-
 Open terminator and configure it to have 5 terminals
 
-        right mouse click -> split vertically
-        right mouse click -> split horizontally ...etc
+        right mouse click (ctrl + shift + e) -> split vertically
+        right mouse click (ctrl + shift + o) -> split horizontally ...etc
 
 Run the following commands on each terminal:
 
@@ -98,7 +91,7 @@ Aditionally at home you can make the [tf tutorial](http://wiki.ros.org/tf/Tutori
 Robot Simulator Instalation
 ===
 
-If you haven´t already done this, you can download the robot simulator from this [link](https://link.com)
+If you haven´t already done this, you can download the robot simulator as instructed above.
 
 
 Run the Simulation
@@ -110,7 +103,10 @@ Run the Simulation
        
 1. In another terminal launch the gazebo environment and the simulated robot:
 
-       roslaunch TODO
+       roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+or
+
+       roslaunch turtlebot3_gazebo turtlebot3_world.launch
        
 2. View the topics launched:
 
@@ -120,19 +116,23 @@ Run the Simulation
        
        rostopic list | grep <keyword>
        
-3. move the robot (rotate):
+3. View the nodes running:
 
-    ```bash
-    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
-    ```
+       rosnode list
+       
+4. View the parameter server:
+
+       rosparam list
+       
+5. move the robot (rotate):
+
+       rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}"
     
-4. move the robot (forward):
+6. move the robot (forward):
 
-    ```bash
-    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
-    ```
+       rostopic pub -r 10 /cmd_vel geometry_msgs/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
 
-5. Analyze a bit the situation:
+7. Analyze a bit the situation:
 
     * If you want more information about rostopic command, check the following website: http://wiki.ros.org/rostopic
 
@@ -148,11 +148,11 @@ Run the Simulation
         rostopic echo /cmd_vel
         ```
 
-6. teleoperate the robot with the keyboard
+8. teleoperate the robot with the keyboard
 
     ```bash
     sudo apt-get install ros-kinetic-teleop-twist-keyboard
-    rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/robot_0/cmd_vel
+    rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
     ```
 
     * move the robot by pressing the following keys on your keyboard:
@@ -194,9 +194,15 @@ Build your catkin workspace:
         roscd
         catkin build
         source ~/.bashrc
+        
+More on turtlebot simulation
+===
+
+If you visit the link https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#ros-1-simulation you will find many tutorials that you can follow to get more used to ROS, gazebo, SLAM, localization, ...
 
 Localize the robot
 ===
+For even more localization practise you can do the following:
 
 Kill all previous ros nodes and start freshly
 
