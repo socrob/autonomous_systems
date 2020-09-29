@@ -103,6 +103,10 @@ Run the Simulation
        
 1. In another terminal launch the gazebo environment and the simulated robot:
 
+       export TURTLEBOT3_MODEL=waffle
+       
+and then:
+
        roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 or
 
