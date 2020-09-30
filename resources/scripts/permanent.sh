@@ -15,9 +15,6 @@ source $HOME/scripts/source_ros_workspace.sh
 # sourcing the catkin workspace (previous step) destroys some env variables
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
-# set this env, only if it does not previouly exist, (override in personal_config.sh if required)
-export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/ros_ws/src}
-
 # load environment variables
 source $HOME/scripts/load_environment_variables.sh
 
