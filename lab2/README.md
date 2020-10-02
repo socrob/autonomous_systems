@@ -193,6 +193,10 @@ Please clone the following repository into your catkin workspace (it contains th
         roscd
         git clone https://github.com/oscar-lima/autom_param_optimization.git
         
+Copy the folder */mcr_manipulation_msgs* from *autonomous_systems/resources* to your workspace. For example, if you cloned *autonomous systems* to the home folder and your workspace is named *catkin_ws* you can do:
+
+        cp -avr ~/autonomous_systems/resources/mcr_manipulation_msgs/ ~/catkin_ws/src/
+
 Build your catkin workspace:
         
         roscd
