@@ -7,8 +7,6 @@ In today's lab you are going to work with the real simulator: [Turtlebot3](https
 The objective of this lab is for you to get familiar with the following tools:
 
 - [turtlebot3 robot](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)
-- [tf](http://wiki.ros.org/tf)
-- [URDF](http://wiki.ros.org/urdf)
 - [robot state publisher](http://wiki.ros.org/robot_state_publisher)
 - [AMCL](http://wiki.ros.org/amcl)
 - [Mapping](http://wiki.ros.org/gmapping)
@@ -30,63 +28,6 @@ Before the lab you should install the simulator and terminator by typing
     catkin build (or cb if you have the aliases)
 
     source ~/.bashrc (or S if you have the aliases)
-
-tf
-===
-
-The following tutorial will help you to understand the [tf](http://wiki.ros.org/tf) ros library.
-
-This [video](https://www.youtube.com/watch?v=2gVo06HR2Tc) from the creator of the tf library is very useful, however a little bit advanced.
-Make sure you understand the basics of tf before watching it.
-
-tf simple example
-===
-
-Open terminator and configure it to have 5 terminals
-
-        right mouse click (ctrl + shift + e) -> split vertically
-        right mouse click (ctrl + shift + o) -> split horizontally ...etc
-
-Run the following commands on each terminal:
-
-        roscore
-        rosrun tf static_transform_publisher 3 2 0 0 0 0 map odom 50
-        rosrun tf static_transform_publisher 3 1 0 0 0 0 odom base_link 50
-        rosrun tf tf_echo map base_link
-        rosrun rviz rviz
-
-Configure rviz:
-
-        set fixed frame as map
-        add tf topic
-        expand tf topic options and set "Marker Scale" to 10
-
-Observe the output of the tf echo terminal:
-
-        Translation: [6.000, 3.000, 0.000]
-        there you have the transform!
-
-Notice that the same can be done from code by taking example from here [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29)
-
-A node has being prepared for you as an example of how to use tf library from code:
-
-        cd $HOME/autonomous_systems/lab2
-        python tf_listener_tutorial.py
-
-Check the code and make sure you understand each line of the provided code.
-
-Print the tf tree pdf:
-
-        sudo apt-get install ros-kinetic-tf2-tools
-        tf_view_frames
-
-Keep in mind this last command (tf_view_frames) is an alias for:
-
-        cd /var/tmp && rosrun tf2_tools view_frames.py && evince frames.pdf &
-
-The above command goes to a temp folder, runs tf2_tools view_frames.py node that generates a pdf, then simply open the frames.pdf generated with a pdf viewer (evince in this case).
-
-Aditionally at home you can make the [tf tutorial](http://wiki.ros.org/tf/Tutorials/Writing%20a%20tf%20listener%20%28Python%29) if you want.
 
 Robot Simulator Instalation
 ===
@@ -192,6 +133,10 @@ Please clone the following repository into your catkin workspace (it contains th
 
         roscd
         git clone https://github.com/oscar-lima/autom_param_optimization.git
+
+Copy the folder */mcr_manipulation_msgs* from *autonomous_systems/resources* to your workspace. For example, if you cloned *autonomous systems* to the home folder and your workspace is named *catkin_ws* you can do:
+
+        cp -avr ~/autonomous_systems/resources/mcr_manipulation_msgs/ ~/catkin_ws/src/
         
 Copy the folder */mcr_manipulation_msgs* from *autonomous_systems/resources* to your workspace. For example, if you cloned *autonomous systems* to the home folder and your workspace is named *catkin_ws* you can do:
 
