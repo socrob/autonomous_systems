@@ -5,9 +5,11 @@ This repository holds code and resources for the Autonomous Systems course that 
 
 For this course you will need to have a machine running Ubuntu, ROS and some other things, please follow the instructions bellow before the laboratory classes begin.
 
+The supported distribution is ROS Kinetic on Ubuntu 16.04, although both ROS Melodic and ROS Noetic on Ubuntu 18.04 and 20.04 should also work. It is preferable to use ROS Kinetic, but if for some reason you already have one of the other Ubuntus you can try that distribution, at your own risk. If there is a problem of incompatibility, you might have to change to ROS Kinetic.
+
 Ubuntu instalation
 ===
-For the first classes you may use a virtual machine (in that case use this [image](http://soma.isr.ist.utl.pt/irsgroup/saut/ubuntu_16_04_64bit.vdi)), but it is advisable, at some point, to use a native instalation of  [Ubuntu 16.04 64-bit](https://www.ubuntu.com/download/alternative-downloads) in order to prevent unwanted issues that may arise from the use of a virtual machine.
+For the first classes you may use a virtual machine, but it is advisable, at some point, to use a native instalation of  [Ubuntu 16.04 64-bit](https://www.ubuntu.com/download/alternative-downloads) in order to prevent unwanted issues that may arise from the use of a virtual machine.
 
 ROS Kinetic installation
 ===
@@ -73,11 +75,11 @@ A partial documentation of this can be found [here](http://wiki.ros.org/catkin/T
 
 Lab1
 ===
-Please open lab1 folder to access the lab slides.
+Lab1 will give you some concepts on ROS, and how to use it. Please open lab1 folder to access the lab slides.
 
 Lab2
 ===
-Please open lab2 folder to access the lab slides and follow the instructions for the practical exercise. There is README.md file inside. You should follow the instructions in the **Before the Lab** section so you can perform the tasks during the lab. This lab will be more hands on than the previous, and you are expected to experiment ROS yourself.
+Lab2 has 2 components, a simulation focused part and the real robot part. Please open lab2-simulation or lab2-real-robot folders to access the content and follow the instructions for the practical exercise. There is README.md file inside. You should follow the instructions in the **Before the Lab** section so you can perform the tasks during the lab. This lab will be more hands on than the previous, and you are expected to experiment ROS yourself. If you can, perform all the tasks in lab2-simulation by yourself so in the classroom you can present your doubts and have time to try the real robot instructions.
 
 
 Questions
