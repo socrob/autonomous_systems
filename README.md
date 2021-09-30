@@ -13,15 +13,16 @@ For the first classes you may use a virtual machine, but it is advisable, at som
 
 ROS Kinetic installation
 ===
+
+Install git on your system:
+
+        sudo apt-get install git
+
 It is advisable to go for the Desktop-Full Instalation of ROS, please go through the instructions in the following link:
 http://wiki.ros.org/kinetic/Installation/Ubuntu
 
 Git and Repository setup
 ===
-
-Install git on your system:
-
-        sudo apt-get install git
 
 Navigate to your home folder:
 
